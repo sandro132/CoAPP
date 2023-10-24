@@ -1,5 +1,22 @@
 {
+
   "dependencies": {
     "express": "^4.18.2"
-  }
+  },
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Proyecto para la empresa coally",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "CoAPP"
+  },
+  "author": "Miguel Velez, Santiago Espejo, Michel Caballero",
+  "license": "MIT"
 }
