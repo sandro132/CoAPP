@@ -1,4 +1,4 @@
-const IndeedModel = require('../models/indeedModel');
+const IndeedSearch = require("../models/IndeedSearch");
 
 // Controlador para buscar y almacenar trabajos de Indeed
 async function buscarYAlmacenarTrabajos(req, res) {
@@ -7,7 +7,7 @@ async function buscarYAlmacenarTrabajos(req, res) {
         const indeedData = await indeedAPI.obtenerTrabajos(req.query.parametros);
 
         // Almacena los datos en la base de datos utilizando el modelo de Mongoose
-        await IndeedModel.create(indeedData);
+        await IndeedSearch.create(indeedData);
 
         return res.status(200).json({ message: 'Datos de Indeed almacenados exitosamente.' });
     } catch (error) {
