@@ -1,4 +1,4 @@
-const LinkedInModel = require('../models/linkedinModel');
+const LinkedInSearch = require("../models/LinkedlnSearch");
 
 // Controlador para buscar y almacenar usuarios de LinkedIn
 async function buscarYAlmacenarUsuarios(req, res) {
@@ -7,7 +7,7 @@ async function buscarYAlmacenarUsuarios(req, res) {
         const linkedinData = await linkedinAPI.obtenerUsuarios(req.query.parametros);
 
         // Almacena los datos en la base de datos utilizando el modelo de Mongoose
-        await LinkedInModel.create(linkedinData);
+        await LinkedInSearch.create(linkedinData);
 
         return res.status(200).json({ message: 'Datos de LinkedIn almacenados exitosamente.' });
     } catch (error) {
