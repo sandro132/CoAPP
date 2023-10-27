@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const indeedSchema = new mongoose.Schema({
     jobTitle: String, // Título del trabajo
