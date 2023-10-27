@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const linkedInSchema = new mongoose.Schema({
     name: String, // Nombre del usuario o profesional

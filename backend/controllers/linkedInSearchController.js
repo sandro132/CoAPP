@@ -1,4 +1,4 @@
-const LinkedInSearch = require("../models/LinkedlnSearch");
+import LinkedInSearch from "../models/LinkedInSearch.js"
 
 // Controlador para buscar y almacenar usuarios de LinkedIn
 async function buscarYAlmacenarUsuarios(req, res) {
