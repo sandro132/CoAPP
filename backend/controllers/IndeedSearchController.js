@@ -1,4 +1,5 @@
-const IndeedSearch = require("../models/IndeedSearch");
+import IndeedSearch from "../models/IndeedSearch.js"
+
 
 // Controlador para buscar y almacenar trabajos de Indeed
 async function buscarYAlmacenarTrabajos(req, res) {
