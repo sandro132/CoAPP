@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
+import Address from "./AddresSchema";
 
-const AdministradorUserSchema = mongoose.Schema({
+const administradorUserSchema = mongoose.Schema({
     nombre: {
         type: String,
         require: true,
@@ -17,10 +18,13 @@ const AdministradorUserSchema = mongoose.Schema({
         trim: true,
         unique: true //Garantiza que no sea un correo ya registrado
     },
+    
+    direccion: Address,
+
     token: {
         type: String
     }
 })
 
-const AdministradorUser = mongoose.model("AdministradorUser", AdminitradorUserSchema);
+const AdministradorUser = mongoose.model("AdministradorUser", administradorUserSchema);
 export default AdministradorUser;

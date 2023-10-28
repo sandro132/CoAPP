@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import Address from "./AddresSchema";
 
 const profesionalUserSchema = mongoose.Schema({
     nombre: {
@@ -17,6 +18,9 @@ const profesionalUserSchema = mongoose.Schema({
         trim: true,
         unique: true //Garantiza que no sea un correo ya registrado
     },
+
+    direccion: Address,
+    
     token: {
         type: String
     }
