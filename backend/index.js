@@ -4,6 +4,7 @@ import conectarDB from "./config/db.js";
 import router from "./routes/usuarioRoutes.js";
 
 const app = express();
+app.use(express.json()) //Permite procesar la informacion tipo json
 
 dotenv.config()
 
