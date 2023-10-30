@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import bcrypt from "bcrypt";
 import Address from "./AddresSchema.js";
 
 const empresaUserSchema = mongoose.Schema({

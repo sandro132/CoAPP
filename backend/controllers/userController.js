@@ -1,16 +1,24 @@
 import ProfesionalUser from "../models/ProfesionalUser.js"
-import EmpresaUser from "../models/EmpresaUser.js"
 import AdministradorUser from "../models/AdministradorUser.js"
+import EmpresaUser from "../models/EmpresaUser.js"
 
 
 //crear const "Eleccion" que reciba el tipo de usuario que se va a crear
 
 const registrar = async (req, res) => {
-    console.log(req.body)
+    // Evitar registros duplicados
+    const { correo } = req.body;
+    const existeUsuario = await ProfesionalUser.findOne({ correo });
+
+    if(existeUsuario) {
+        const error = new Error("usuario ya registrados");
+        return res.status(400).json({ msg: error.message });
+    }
+
     // Condicional para elegir el tipo de usuario
     try {
-        const profesionalUser = new ProfesionalUser(req.body)
-        usuarioAlmacenado = await profesionalUser.save();
+        const profesionalUser = new ProfesionalUser(req.body);
+        const usuarioAlmacenado = await profesionalUser.save();
         res.json(usuarioAlmacenado);
 
     } catch (error) {
@@ -18,13 +26,17 @@ const registrar = async (req, res) => {
     };
 
     // try {
-    //     const emp resaUser = new EmpresaUser(req.body)
+        // const empresaUser = new EmpresaUser(req.body);
+        // const usuarioAlmacenado = await empresaUser.save();
+        // res.json(usuarioAlmacenado);
     // } catch (error) {
     //     console.log(error)
     // };
 
     // try {
-    //     const administradorUser = new AdministradorUser(req.body)
+    //     const administradorUser = new AdministradorUser(req.body);
+    //     const usuarioAlmacenado = await administradorUser.save();
+    //     res.json(usuarioAlmacenado);
     // } catch (error) {
     //     console.log(error)
     // };
