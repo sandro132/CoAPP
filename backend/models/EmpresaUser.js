@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import Address from "./AddresSchema";
+import Address from "./AddresSchema.js";
 
 const empresaUserSchema = mongoose.Schema({
     nombre: {
@@ -24,7 +24,7 @@ const empresaUserSchema = mongoose.Schema({
         unique: true //Garantiza que no sea un correo ya registrado
     },
     
-    direccion: Address,
+    //direccion: Address,
 
     NIT: {
         type: Number,
@@ -34,7 +34,15 @@ const empresaUserSchema = mongoose.Schema({
     token: {
         type: String
     },
-});
+    confirmado: {
+        type: Boolean,
+        default: false
+    },
+},
+{
+    timestamps: true,
+},
+);
 
 const EmpresaUser = mongoose.model("EmpresaUser", empresaUserSchema);
 export default EmpresaUser;

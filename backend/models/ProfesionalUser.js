@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import Address from "./AddresSchema";
+import Address from "./AddresSchema.js";
 
 const profesionalUserSchema = mongoose.Schema({
     nombre: {
@@ -7,24 +7,32 @@ const profesionalUserSchema = mongoose.Schema({
         require: true,
         trim: true // Elimina espacios de incio y fin
     },
-    password: {
+    contraseña: {
         type: String,
         require: true,
         trim: true
     },
-    email: {
+    correo: {
         type: String,
         require: true,
         trim: true,
         unique: true //Garantiza que no sea un correo ya registrado
     },
 
-    direccion: Address,
+//    direccion: Address,
     
     token: {
         type: String
-    }
-})
+    },
+    confirmado: {
+        type: Boolean,
+        default: false
+    },
+},
+{
+    timestamps: true,
+},
+);
 
 const ProfesionalUser = mongoose.model("ProfesionalUser", profesionalUserSchema);
 export default ProfesionalUser;
