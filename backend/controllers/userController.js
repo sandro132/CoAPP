@@ -1,70 +1,87 @@
-import {  Profesional, Empresa, Administrador } from "../models/Usuarios.js"
+import Usuario from "../models/Usuarios.js"
 import generarId from "../helpers/generarId.js"
-
-//crear const "Eleccion" que reciba el tipo de usuario que se va a crear
+import generarJWT from "../helpers/generarJWT.js"
 
 const registrar = async (req, res) => {
     // Const para verificacion de correo
     const { correo } = req.body;
 
-    //Verificar el tipo de usuario
-    const { tipoUsuario } = req.body;
+    // Evitar registros duplicados
+    const existeUsuario = await Usuario.findOne({ correo });
+
+    if(existeUsuario) {
+        const error = new Error("usuario ya registrados");
+        return res.status(400).json({ msg: error.message });
+    };
+
+    try {
+        const usuario = new Usuario(req.body);
+        usuario.token = generarId();
+        const usuarioAlmacenado = await usuario.save();
+        res.json(usuarioAlmacenado);
+    } catch (error) {
+        console.log(error)
+    };
+}
+
+
+const autenticar = async (req, res) => {
+    const { correo, contraseña } = req.body;
     
-    if(tipoUsuario == "profesional") {
-        // Evitar registros duplicados
-        const existeUsuario = await Profesional.findOne({ correo });
+    // Comprobar existencia del usuario en las 3 bases
+    const usuario = await Usuario.findOne({ correo });
+    if (!usuario) {
+        const error = new Error("El Usuario no existe");
+        return res.status(404).json({ msg: error.message });
+    }
 
-        if(existeUsuario) {
-            const error = new Error("usuario ya registrados");
-            return res.status(400).json({ msg: error.message });
-        };
+    // Comprobar el usuario confirmado
+    if (!usuario.confirmado) {
+        const error = new Error("Tu cuenta no ha sido confirmada");
+        return res.status(403).json({ msg: error.message });
+    }
 
-        try {
-            const profesionalUser = new Profesional(req.body);
-            profesionalUser.token = generarId();
-            const usuarioAlmacenado = await profesionalUser.save();
-            res.json(usuarioAlmacenado);
-        } catch (error) {
-            console.log(error)
-        };
+    // Comprobar password
+    if(await usuario.comprobarContraseña(contraseña)) {
+        res.json({
+            _id: usuario._id,
+            nombre: usuario.nombre,
+            correo: usuario.correo,
+            token: generarJWT(usuario._id),
+        })
 
-    } else if(tipoUsuario == "empresa") {
-        // Evitar registros duplicados
-        const existeUsuario = await Empresa.findOne({ correo });
-
-        if(existeUsuario) {
-            const error = new Error("usuario ya registrados");
-            return res.status(400).json({ msg: error.message });
-        };
-        
-        try {
-            const empresaUser = new Empresa(req.body);
-            empresaUser.token = generarId(); 
-            const usuarioAlmacenado = await empresaUser.save();
-            res.json(usuarioAlmacenado);
-        } catch (error) {
-            console.log(error)
-        };
-
-    } else if(tipoUsuario == "administrador") {
-        const existeUsuario = await Administrador.findOne({ correo });
-
-        if(existeUsuario) {
-            const error = new Error("usuario ya registrados");
-            return res.status(400).json({ msg: error.message });
-        };
-    
-        try {
-            const administradorUser = new Administrador(req.body);
-            administradorUser.toke = generarId();
-            const usuarioAlmacenado = await administradorUser.save();
-            res.json(usuarioAlmacenado);
-        } catch (error) {
-            console.log(error)
-        };
+    } else {
+        const error = new Error("El password es incorrecto");
+        return res.status(403).json({ msg: error.message })
     }
 }
 
+const confirmar = async (req, res) => {
+    const { token } = req.params
+    const usuarioConfirmar = await Usuario.findOne({ token });
+    if(!usuarioConfirmar) {
+        const error = new Error("Token no valido");
+        return res.status(403).json({ msg: error.message })
+    };
+
+    try {
+        usuarioConfirmar.confirmado = true;
+        usuarioConfirmar.token = "";
+        await usuarioConfirmar.save();
+        res.json({ msg: "Usuario Confirmado Correctamente" });
+
+    } catch {
+        console.log(error);
+    }
+};
+
+const olvidePassword = async (req, res) => {
+    
+}
+
 export { 
-    registrar
+    registrar,
+    autenticar,
+    confirmar,
+    olvidePassword
 }
