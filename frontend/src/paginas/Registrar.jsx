@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import { Link } from "react-router-dom";
 import Alerta from '../componentes/Alerta';
+import Drop from '../componentes/Drop';
+
+
 
 const Registrar = () => {
   const [ nombre, setNombre ] = useState('')
@@ -50,13 +53,15 @@ const Registrar = () => {
       <h1 className="text-color:#393939 font-black text-4xl flex ">
         ¡Registrate aquí!
       </h1>
-
+        
       {msg && <Alerta alerta={alerta} />}
 
       <form 
         className="my-10 bg-white shadow rounder-lg p-10"
         onSubmit={handleSubmit}>
+          <Drop />
         <div className="my-5">
+          
           <label
             className="uppercase text-gray-600 block text-xl font-bold"
             htmlFor="nombre"
