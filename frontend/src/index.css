@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 .DropdownButton{
-    background-color: #f40;
+    background-color: #fA7400;
 }
 
 .DropdownButton:hover{
-    background-color: orangered;
+    background-color: #fA7400;
 }
