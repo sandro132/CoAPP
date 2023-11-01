@@ -200,7 +200,7 @@ const Registrar = () => {
         <input
           type="submit"
           value="Crear Cuenta"
-          className="bg-orange-400 mb-5 w-full py-3 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-orange-600 transition-colors"
+          className="bg-orange-400 mb-5 w-full py-3 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-orange-500 transition-colors"
         />
       </form>
 
