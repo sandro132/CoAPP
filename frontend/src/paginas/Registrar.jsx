@@ -7,8 +7,8 @@ import Drop from '../componentes/Drop';
 
 const Registrar = () => {
   const [nombre, setNombre] = useState('')
-  const [pais, setPais] = useState("")
-  const [departamento, setDepartamento] = useState("")
+  const [numerodeidentidad, setNumeroDeIdentidad] = useState("")
+  const [celular, setCelular] = useState("")
   const [ciudad, setCiudad] = useState("")
   
   const [ email, setEmail ] = useState('')
@@ -97,34 +97,34 @@ const Registrar = () => {
         <div className="my-5">
           <label
             className="uppercase text-gray-600 block text-xl font-bold"
-            htmlFor="pais"
+            htmlFor="numerodeidentidad"
           >
-            Pais
+            numerodeidentidad
           </label>
           <input
-            id="pais"
+            id="numerodeidentidad"
             type="text"
-            placeholder="Pais"
+            placeholder="numerodeidentidad"
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
-            value={pais}
-            onChange={(e) => setPais(e.target.value)}
+            value={numerodeidentidad}
+            onChange={(e) => setNumeroDeIdentidad(e.target.value)}
           />
         </div>
 
         <div className="my-5">
           <label
             className="uppercase text-gray-600 block text-xl font-bold"
-            htmlFor="departamento"
+            htmlFor="celular"
           >
-            Departamento
+            celular
           </label>
           <input
-            id="departamento"
+            id="celular"
             type="text"
-            placeholder="Departamento"
+            placeholder="celular"
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
-            value={departamento}
-            onChange={(e) => setDepartamento(e.target.value)}
+            value={celular}
+            onChange={(e) => setCelular(e.target.value)}
           />
         </div>
 
