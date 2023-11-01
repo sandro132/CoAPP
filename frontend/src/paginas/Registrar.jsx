@@ -6,20 +6,20 @@ import Drop from '../componentes/Drop';
 
 
 const Registrar = () => {
+  const [tipoUsuario, setTipoUsuario] = useState("")
   const [nombre, setNombre] = useState('')
-  const [numerodeidentidad, setNumeroDeIdentidad] = useState("")
+  const [numeroIdentidad, setNumeroIdentidad] = useState("")
   const [celular, setCelular] = useState("")
-  const [ciudad, setCiudad] = useState("")
   
-  const [ email, setEmail ] = useState('')
-  const [ password, setPassword ] = useState('')
+  const [ correo, setCorreo ] = useState('')
+  const [ contraseña, setContraseña ] = useState('')
   const [ repetirpassword, setRepetirPassword ] = useState('')
   const [ alerta, setAlerta ] = useState({})
   
   const handleSubmit = e => {
     e.preventDefault();
 
-    if([nombre, email, password, repetirpassword].includes('')) {
+    if([nombre, correo, contraseña, repetirpassword].includes('')) {
       setAlerta({
         msg: 'Todos los campos son obligatorios',
         error: true
@@ -27,17 +27,17 @@ const Registrar = () => {
       return
     }
 
-    if(password != repetirpassword ) {
+    if(contraseña != repetirpassword ) {
       setAlerta({
-        msg: 'Los password no son iguales',
+        msg: 'Las contraseñas no son iguales',
         error: true
       })
       return
     }
 
-    if(password.length < 6 ) {
+    if(contraseña.length < 6 ) {
       setAlerta({
-        msg: 'Los password es muy corto, minimo 6 carateres',
+        msg: 'La contraseña es muy corta, minimo 6 carateres',
         error: true
       })
       return
@@ -97,17 +97,17 @@ const Registrar = () => {
         <div className="my-5">
           <label
             className="uppercase text-gray-600 block text-xl font-bold"
-            htmlFor="numerodeidentidad"
+            htmlFor="numeroIdentidad"
           >
             Numero de identidad
           </label>
           <input
-            id="numerodeidentidad"
+            id="numeroIdentidad"
             type="text"
-            placeholder="numerodeidentidad"
+            placeholder="numeroIdentidad"
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
-            value={numerodeidentidad}
-            onChange={(e) => setNumeroDeIdentidad(e.target.value)}
+            value={numeroIdentidad}
+            onChange={(e) => setNumeroIdentidad(e.target.value)}
           />
         </div>
 
@@ -131,52 +131,35 @@ const Registrar = () => {
         <div className="my-5">
           <label
             className="uppercase text-gray-600 block text-xl font-bold"
-            htmlFor="ciudad"
+            htmlFor="correo"
           >
-            Ciudad
+            Correo
           </label>
           <input
-            id="ciudad"
-            type="text"
-            placeholder="Ciudad"
-            className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
-            value={ciudad}
-            onChange={(e) => setCiudad(e.target.value)}
-          />
-        </div>
-
-        <div className="my-5">
-          <label
-            className="uppercase text-gray-600 block text-xl font-bold"
-            htmlFor="email"
-          >
-            Email
-          </label>
-          <input
-            id="email"
-            type="email"
+            id="correo"
+            type="correo"
             placeholder="Email de Registro "
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={correo}
+            onChange={(e) => setCorreo(e.target.value)}
           />
         </div>
 
         <div className="my-5">
           <label
             className="uppercase text-gray-600 block text-xl font-bold"
-            htmlFor="password"
+            htmlFor="contraseña"
           >
-            Password
+            Contraseña
           </label>
           <span className="icon-eye"></span>
           <input
-            id="password"
-            type="password"
+            id="contraseña"
+            type="contraseña"
             placeholder="Password de Registro "
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={contraseña}
+            onChange={(e) => setContraseña(e.target.value)}
           />
         </div>
 
