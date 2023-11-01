@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from "react-router-dom";
 import Alerta from '../components/Alerta';
 import Drop from '../components/Drop';
+import axios from 'axios';
 
 
 
@@ -46,27 +47,12 @@ const Registrar = () => {
     setAlerta({})
 
     //crear el usuario en la API
-
-  try {
-    const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/usuarios`, {nombre, correo, contraseña} )
-
-    setAlerta({
-        msg: data.msg,
-        error: false
-    })
-
-    setTipoUsuario("");
-    setNombre("");
-    setCorreo("");
-    setContraseña("");
-    setRepetirContraseña("");
-
-  } catch (error) {
-    setAlerta({
-      msg: error.response.data.msg,
-      error: true
-    })
-  }
+    try {
+      const respuesta = await axios.post('http://localhost:4000/api/usuarios', { tipoUsuario, nombre, numeroIdentidad, celular, correo, contraseña })
+      console.log(respuesta)
+    } catch (error) {
+        console.log(error)
+    }
 
 }
 
@@ -203,7 +189,7 @@ const Registrar = () => {
         <input
           type="submit"
           value="Crear Cuenta"
-          className="bg-orange-400 mb-5 w-full py-3 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-orange-600 transition-colors"
+          className="bg-orange-400 mb-5 w-full py-3 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-orange-500 transition-colors"
         />
       </form>
 

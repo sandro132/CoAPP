@@ -49,15 +49,13 @@ const Login = () => {
             type="password"
             placeholder="Password de Registro "
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
-            
-            
           />
         </div>
 
         <input
           type="submit"
           value="Iniciar Sesión"
-          className="bg-sky-700 mb-5 w-full py-3 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-sky-800 transition-colors"
+          className="bg-orange-400 mb-5 w-full py-3 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-orange-500 transition-colors"
         />
       </form>
 
