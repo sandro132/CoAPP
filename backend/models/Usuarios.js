@@ -19,7 +19,7 @@ const usuarioSchema = mongoose.Schema(
             trim: true,
             },
         
-        numeroIdentidad: {
+        celular: {
             type: Number,
             require: true,
             trim: true,
