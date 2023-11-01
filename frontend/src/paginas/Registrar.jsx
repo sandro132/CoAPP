@@ -1,25 +1,26 @@
 import { useState } from 'react'
 import { Link } from "react-router-dom";
-import Alerta from '../componentes/Alerta';
-import Drop from '../componentes/Drop';
+import Alerta from '../components/Alerta';
+import Drop from '../components/Drop';
+import axios from 'axios';
 
 
 
 const Registrar = () => {
+  const [tipoUsuario, setTipoUsuario] = useState("")
   const [nombre, setNombre] = useState('')
-  const [pais, setPais] = useState("")
-  const [departamento, setDepartamento] = useState("")
-  const [ciudad, setCiudad] = useState("")
+  const [numeroIdentidad, setNumeroIdentidad] = useState("")
+  const [celular, setCelular] = useState("")
   
-  const [ email, setEmail ] = useState('')
-  const [ password, setPassword ] = useState('')
-  const [ repetirpassword, setRepetirPassword ] = useState('')
+  const [ correo, setCorreo ] = useState('')
+  const [ contraseña, setContraseña ] = useState('')
+  const [ repetircontraseña, setRepetirContraseña ] = useState('')
   const [ alerta, setAlerta ] = useState({})
   
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
 
-    if([nombre, email, password, repetirpassword].includes('')) {
+    if([nombre, correo, contraseña, repetircontraseña].includes('')) {
       setAlerta({
         msg: 'Todos los campos son obligatorios',
         error: true
@@ -27,17 +28,17 @@ const Registrar = () => {
       return
     }
 
-    if(password != repetirpassword ) {
+    if(contraseña != repetircontraseña ) {
       setAlerta({
-        msg: 'Los password no son iguales',
+        msg: 'Las contraseñas no son iguales',
         error: true
       })
       return
     }
 
-    if(password.length < 6 ) {
+    if(contraseña.length < 6 ) {
       setAlerta({
-        msg: 'Los password es muy corto, minimo 6 carateres',
+        msg: 'La contraseña es muy corta, minimo 6 carateres',
         error: true
       })
       return
@@ -47,12 +48,13 @@ const Registrar = () => {
 
     //crear el usuario en la API
     try {
-      const respuesta = await axios
-
+      const respuesta = await axios.post('http://localhost:4000/api/usuarios', { tipoUsuario, nombre, numeroIdentidad, celular, correo, contraseña })
+      console.log(respuesta)
     } catch (error) {
         console.log(error)
     }
-  }
+
+}
 
   const { msg } = alerta
 
@@ -80,7 +82,7 @@ const Registrar = () => {
         className="my-10 bg-white shadow rounder-lg p-10"
         onSubmit={handleSubmit}
       >
-        <Drop />
+        <Drop value={tipoUsuario} />
         <div className="my-5">
           <label
             className="uppercase text-gray-600 block text-xl font-bold"
@@ -101,103 +103,86 @@ const Registrar = () => {
         <div className="my-5">
           <label
             className="uppercase text-gray-600 block text-xl font-bold"
-            htmlFor="pais"
+            htmlFor="numeroIdentidad"
           >
-            Pais
+            Numero de identidad
           </label>
           <input
-            id="pais"
+            id="numeroIdentidad"
             type="text"
-            placeholder="Pais"
+            placeholder="numeroIdentidad"
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
-            value={pais}
-            onChange={(e) => setPais(e.target.value)}
+            value={numeroIdentidad}
+            onChange={(e) => setNumeroIdentidad(e.target.value)}
           />
         </div>
 
         <div className="my-5">
           <label
             className="uppercase text-gray-600 block text-xl font-bold"
-            htmlFor="departamento"
+            htmlFor="celular"
           >
-            Departamento
+            Celular
           </label>
           <input
-            id="departamento"
+            id="celular"
             type="text"
-            placeholder="Departamento"
+            placeholder="celular"
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
-            value={departamento}
-            onChange={(e) => setDepartamento(e.target.value)}
+            value={celular}
+            onChange={(e) => setCelular(e.target.value)}
           />
         </div>
 
         <div className="my-5">
           <label
             className="uppercase text-gray-600 block text-xl font-bold"
-            htmlFor="ciudad"
+            htmlFor="correo"
           >
-            Ciudad
+            Correo
           </label>
           <input
-            id="ciudad"
-            type="text"
-            placeholder="Ciudad"
-            className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
-            value={ciudad}
-            onChange={(e) => setCiudad(e.target.value)}
-          />
-        </div>
-
-        <div className="my-5">
-          <label
-            className="uppercase text-gray-600 block text-xl font-bold"
-            htmlFor="email"
-          >
-            Email
-          </label>
-          <input
-            id="email"
-            type="email"
+            id="correo"
+            type="correo"
             placeholder="Email de Registro "
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={correo}
+            onChange={(e) => setCorreo(e.target.value)}
           />
         </div>
 
         <div className="my-5">
           <label
             className="uppercase text-gray-600 block text-xl font-bold"
-            htmlFor="password"
+            htmlFor="contraseña"
           >
-            Password
+            Contraseña
           </label>
           <span className="icon-eye"></span>
           <input
-            id="password"
-            type="password"
-            placeholder="Password de Registro "
+            id="contraseña"
+            type="contraseña"
+            placeholder="contraseña de Registro "
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={contraseña}
+            onChange={(e) => setContraseña(e.target.value)}
           />
         </div>
 
         <div className="my-5">
           <label
             className="uppercase text-gray-600 block text-xl font-bold"
-            htmlFor="password2"
+            htmlFor="contraseña2"
           >
-            Repetir Password
+            Repetir Contraseña
           </label>
           <input
-            id="password2"
-            type="password"
-            placeholder="Repetir tu Password"
+            id="contraseña2"
+            type="contraseña"
+            placeholder="Repetir tu contraseña"
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
-            value={repetirpassword}
-            onChange={(e) => setRepetirPassword(e.target.value)}
+            value={repetircontraseña}
+            onChange={(e) => setRepetirContraseña(e.target.value)}
           />
         </div>
 
