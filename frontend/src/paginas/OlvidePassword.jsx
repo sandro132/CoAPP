@@ -3,6 +3,18 @@ import {Link} from "react-router-dom"
 const OlvidePassword = () => {
   return (
     <>
+      <div>
+        <img
+          className="display:flex align-items:center justify-content:center"
+          src="https://coally-images.s3.amazonaws.com/logo-coally-n.png"
+          alt="Logo Coally"
+          loading="lazy"
+          width="250"
+          height="115"
+          decoding="async"
+          data-nimg="1"
+        />
+      </div>
       <h1 className="text-color:#393939 font-black text-4xl flex ">
         Recupera tu Acceso
       </h1>

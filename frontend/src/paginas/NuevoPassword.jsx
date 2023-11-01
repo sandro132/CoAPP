@@ -2,18 +2,29 @@
 const NuevoPassword = () => {
   return (
     <>
+      <div>
+        <img
+          className="display:flex align-items:center justify-content:center"
+          src="https://coally-images.s3.amazonaws.com/logo-coally-n.png"
+          alt="Logo Coally"
+          loading="lazy"
+          width="250"
+          height="115"
+          decoding="async"
+          data-nimg="1"
+        />
+      </div>
       <h1 className="text-color:#393939 font-black text-4xl flex ">
         Reestablece tu password
       </h1>
 
       <form className="my-10 bg-white shadow rounder-lg p-10">
-       
         <div className="my-5">
           <label
             className="uppercase text-gray-600 block text-xl font-bold"
             htmlFor="password"
           >
-           Nuevo Password
+            Nuevo Password
           </label>
           <input
             id="password"
