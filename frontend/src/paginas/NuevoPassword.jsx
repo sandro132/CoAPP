@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 const NuevoPassword = () => {
   return (
@@ -40,8 +41,17 @@ const NuevoPassword = () => {
           className="bg-orange-400 mb-5 w-full py-3 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-orange-500 transition-colors"
         />
       </form>
+      <nav>
+        <Link
+          className="block text-center my-5 text-slate-500 uppercase text-sm"
+          to="/"
+        >
+          ¿Ya tienes una cuenta?{" "}
+          <span className="text-sky-900">Inicia Sesión</span>
+        </Link>
+      </nav>
     </>
   );
-}
+};
 
-export default NuevoPassword
+export default NuevoPassword;

@@ -17,7 +17,6 @@ function Drop() {
             </DropdownToggle>
   
             <DropdownMenu>
-                <DropdownItem>Administrador</DropdownItem>
                 <DropdownItem>Profesional</DropdownItem>
                 <DropdownItem>Empresa</DropdownItem>
         

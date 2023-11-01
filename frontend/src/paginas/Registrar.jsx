@@ -7,15 +7,12 @@ import axios from 'axios';
 
 
 const Registrar = () => {
-  const [tipoUsuario, setTipoUsuario] = useState("")
+  // const [tipoUsuario, setTipoUsuario] = useState("")
   const [nombre, setNombre] = useState('')
-  const [numeroIdentidad, setNumeroIdentidad] = useState("")
-  const [celular, setCelular] = useState("")
-  
-  const [ correo, setCorreo ] = useState('')
-  const [ contraseña, setContraseña ] = useState('')
-  const [ repetircontraseña, setRepetirContraseña ] = useState('')
-  const [ alerta, setAlerta ] = useState({})
+  const [correo, setCorreo] = useState('')
+  const [contraseña, setContraseña] = useState('')
+  const [repetircontraseña, setRepetirContraseña] = useState('')
+  const [alerta, setAlerta] = useState({})
   
   const handleSubmit = async e => {
     e.preventDefault();
@@ -48,7 +45,7 @@ const Registrar = () => {
 
     //crear el usuario en la API
     try {
-      const respuesta = await axios.post('http://localhost:4000/api/usuarios', { tipoUsuario, nombre, numeroIdentidad, celular, correo, contraseña })
+      const respuesta = await axios.post('http://localhost:4000/api/usuarios', { nombre, correo, contraseña })
       console.log(respuesta)
     } catch (error) {
         console.log(error)
@@ -82,7 +79,7 @@ const Registrar = () => {
         className="my-10 bg-white shadow rounder-lg p-10"
         onSubmit={handleSubmit}
       >
-        <Drop value={tipoUsuario} />
+        <Drop/>
         <div className="my-5">
           <label
             className="uppercase text-gray-600 block text-xl font-bold"
@@ -93,44 +90,10 @@ const Registrar = () => {
           <input
             id="nombre"
             type="text"
-            placeholder="Nombre Completo"
+            placeholder="Introduce tu nombre completo"
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
             value={nombre}
             onChange={(e) => setNombre(e.target.value)}
-          />
-        </div>
-
-        <div className="my-5">
-          <label
-            className="uppercase text-gray-600 block text-xl font-bold"
-            htmlFor="numeroIdentidad"
-          >
-            Numero de identidad
-          </label>
-          <input
-            id="numeroIdentidad"
-            type="text"
-            placeholder="numeroIdentidad"
-            className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
-            value={numeroIdentidad}
-            onChange={(e) => setNumeroIdentidad(e.target.value)}
-          />
-        </div>
-
-        <div className="my-5">
-          <label
-            className="uppercase text-gray-600 block text-xl font-bold"
-            htmlFor="celular"
-          >
-            Celular
-          </label>
-          <input
-            id="celular"
-            type="text"
-            placeholder="celular"
-            className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
-            value={celular}
-            onChange={(e) => setCelular(e.target.value)}
           />
         </div>
 
@@ -143,8 +106,8 @@ const Registrar = () => {
           </label>
           <input
             id="correo"
-            type="correo"
-            placeholder="Email de Registro "
+            type="email"
+            placeholder="nombre@correo.com"
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
             value={correo}
             onChange={(e) => setCorreo(e.target.value)}
@@ -161,8 +124,8 @@ const Registrar = () => {
           <span className="icon-eye"></span>
           <input
             id="contraseña"
-            type="contraseña"
-            placeholder="contraseña de Registro "
+            type="password"
+            placeholder="Introduce tu contraseña"
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
             value={contraseña}
             onChange={(e) => setContraseña(e.target.value)}
@@ -178,7 +141,7 @@ const Registrar = () => {
           </label>
           <input
             id="contraseña2"
-            type="contraseña"
+            type="password"
             placeholder="Repetir tu contraseña"
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
             value={repetircontraseña}
