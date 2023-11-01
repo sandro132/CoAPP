@@ -13,26 +13,15 @@ const usuarioSchema = mongoose.Schema(
             require: true,
             trim: true // Elimina espacios de incio y fin
         },
-        razonSocial: {
-            type: String,
-            require: function () {
-                if(this.tipoUsuario === "empresa") {
-                    return true
-                } else {
-                    return false
-                }
-            },
-            trim: true,
-        },
-        NIT: {
+        numeroIdentidad: {
             type: Number,
-            require: function () {
-                if(this.tipoUsuario == "empresa") {
-                    return true
-                } else {
-                    return false
-                }
+            require: true,
+            trim: true,
             },
+        
+        numeroIdentidad: {
+            type: Number,
+            require: true,
             trim: true,
         },
         contraseña: {
