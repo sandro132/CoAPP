@@ -46,8 +46,12 @@ const Registrar = () => {
     setAlerta({})
 
     //crear el usuario en la API
+    try {
+      const respuesta = await axios
 
-    console.log('creando')
+    } catch (error) {
+        console.log(error)
+    }
   }
 
   const { msg } = alerta
