@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from "react-router-dom";
-import Alerta from '../componentes/Alerta';
-import Drop from '../componentes/Drop';
+import Alerta from '../components/Alerta';
+import Drop from '../components/Drop';
 
 
 
