@@ -13,13 +13,13 @@ const Registrar = () => {
   
   const [ correo, setCorreo ] = useState('')
   const [ contraseña, setContraseña ] = useState('')
-  const [ repetirpassword, setRepetirPassword ] = useState('')
+  const [ repetircontraseña, setRepetirContraseña ] = useState('')
   const [ alerta, setAlerta ] = useState({})
   
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
 
-    if([nombre, correo, contraseña, repetirpassword].includes('')) {
+    if([nombre, correo, contraseña, repetircontraseña].includes('')) {
       setAlerta({
         msg: 'Todos los campos son obligatorios',
         error: true
@@ -27,7 +27,7 @@ const Registrar = () => {
       return
     }
 
-    if(contraseña != repetirpassword ) {
+    if(contraseña != repetircontraseña ) {
       setAlerta({
         msg: 'Las contraseñas no son iguales',
         error: true
@@ -47,8 +47,28 @@ const Registrar = () => {
 
     //crear el usuario en la API
 
-    console.log('creando')
+  try {
+    const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/usuarios`, {nombre, correo, contraseña} )
+
+    setAlerta({
+        msg: data.msg,
+        error: false
+    })
+
+    setTipoUsuario("");
+    setNombre("");
+    setCorreo("");
+    setContraseña("");
+    setRepetirContraseña("");
+
+  } catch (error) {
+    setAlerta({
+      msg: error.response.data.msg,
+      error: true
+    })
   }
+
+}
 
   const { msg } = alerta
 
@@ -76,7 +96,7 @@ const Registrar = () => {
         className="my-10 bg-white shadow rounder-lg p-10"
         onSubmit={handleSubmit}
       >
-        <Drop />
+        <Drop value={tipoUsuario} />
         <div className="my-5">
           <label
             className="uppercase text-gray-600 block text-xl font-bold"
@@ -156,7 +176,7 @@ const Registrar = () => {
           <input
             id="contraseña"
             type="contraseña"
-            placeholder="Password de Registro "
+            placeholder="contraseña de Registro "
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
             value={contraseña}
             onChange={(e) => setContraseña(e.target.value)}
@@ -166,17 +186,17 @@ const Registrar = () => {
         <div className="my-5">
           <label
             className="uppercase text-gray-600 block text-xl font-bold"
-            htmlFor="password2"
+            htmlFor="contraseña2"
           >
-            Repetir Password
+            Repetir Contraseña
           </label>
           <input
-            id="password2"
-            type="password"
-            placeholder="Repetir tu Password"
+            id="contraseña2"
+            type="contraseña"
+            placeholder="Repetir tu contraseña"
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
-            value={repetirpassword}
-            onChange={(e) => setRepetirPassword(e.target.value)}
+            value={repetircontraseña}
+            onChange={(e) => setRepetirContraseña(e.target.value)}
           />
         </div>
 
