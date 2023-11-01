@@ -99,7 +99,7 @@ const Registrar = () => {
             className="uppercase text-gray-600 block text-xl font-bold"
             htmlFor="numerodeidentidad"
           >
-            numerodeidentidad
+            Numero de identidad
           </label>
           <input
             id="numerodeidentidad"
@@ -116,7 +116,7 @@ const Registrar = () => {
             className="uppercase text-gray-600 block text-xl font-bold"
             htmlFor="celular"
           >
-            celular
+            Celular
           </label>
           <input
             id="celular"
