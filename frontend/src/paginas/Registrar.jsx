@@ -87,7 +87,7 @@ const Registrar = () => {
           <input
             id="nombre"
             type="text"
-            placeholder="Nombre Completo"
+            placeholder="Introduce tu nombre"
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
             value={nombre}
             onChange={(e) => setNombre(e.target.value)}
@@ -104,7 +104,7 @@ const Registrar = () => {
           <input
             id="numerodeidentidad"
             type="text"
-            placeholder="numerodeidentidad"
+            placeholder="Numero de identidad"
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
             value={numerodeidentidad}
             onChange={(e) => setNumeroDeIdentidad(e.target.value)}
@@ -173,7 +173,7 @@ const Registrar = () => {
           <input
             id="password"
             type="password"
-            placeholder="Password de Registro "
+            placeholder="Introduce tu contraseña "
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
