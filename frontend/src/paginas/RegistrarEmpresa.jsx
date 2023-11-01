@@ -1,57 +1,6 @@
-import { useState } from 'react'
-import { Link } from "react-router-dom";
-import Alerta from '../componentes/Alerta';
-import Drop from '../componentes/Drop';
 
 
-
-const Registrar = () => {
-  const [nombre, setNombre] = useState('')
-  const [pais, setPais] = useState("")
-  const [departamento, setDepartamento] = useState("")
-  const [ciudad, setCiudad] = useState("")
-  
-  const [ email, setEmail ] = useState('')
-  const [ password, setPassword ] = useState('')
-  const [ repetirpassword, setRepetirPassword ] = useState('')
-  const [ alerta, setAlerta ] = useState({})
-  
-  const handleSubmit = e => {
-    e.preventDefault();
-
-    if([nombre, email, password, repetirpassword].includes('')) {
-      setAlerta({
-        msg: 'Todos los campos son obligatorios',
-        error: true
-      })
-      return
-    }
-
-    if(password != repetirpassword ) {
-      setAlerta({
-        msg: 'Los password no son iguales',
-        error: true
-      })
-      return
-    }
-
-    if(password.length < 6 ) {
-      setAlerta({
-        msg: 'Los password es muy corto, minimo 6 carateres',
-        error: true
-      })
-      return
-    }
-
-    setAlerta({})
-
-    //crear el usuario en la API
-
-    console.log('creando')
-  }
-
-  const { msg } = alerta
-
+const RegistrarEmpresa = () => {
   return (
     <>
       <div>
@@ -91,57 +40,6 @@ const Registrar = () => {
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
             value={nombre}
             onChange={(e) => setNombre(e.target.value)}
-          />
-        </div>
-
-        <div className="my-5">
-          <label
-            className="uppercase text-gray-600 block text-xl font-bold"
-            htmlFor="pais"
-          >
-            Pais
-          </label>
-          <input
-            id="pais"
-            type="text"
-            placeholder="Pais"
-            className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
-            value={pais}
-            onChange={(e) => setPais(e.target.value)}
-          />
-        </div>
-
-        <div className="my-5">
-          <label
-            className="uppercase text-gray-600 block text-xl font-bold"
-            htmlFor="departamento"
-          >
-            Departamento
-          </label>
-          <input
-            id="departamento"
-            type="text"
-            placeholder="Departamento"
-            className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
-            value={departamento}
-            onChange={(e) => setDepartamento(e.target.value)}
-          />
-        </div>
-
-        <div className="my-5">
-          <label
-            className="uppercase text-gray-600 block text-xl font-bold"
-            htmlFor="ciudad"
-          >
-            Ciudad
-          </label>
-          <input
-            id="ciudad"
-            type="text"
-            placeholder="Ciudad"
-            className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
-            value={ciudad}
-            onChange={(e) => setCiudad(e.target.value)}
           />
         </div>
 
@@ -200,7 +98,7 @@ const Registrar = () => {
         <input
           type="submit"
           value="Crear Cuenta"
-          className="bg-orange-400 mb-5 w-full py-3 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-orange-600 transition-colors"
+          className="bg-sky-700 mb-5 w-full py-3 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-sky-800 transition-colors"
         />
       </form>
 
@@ -221,6 +119,6 @@ const Registrar = () => {
       </nav>
     </>
   );
-};
+}
 
-export default Registrar;
+export default RegistrarAdmon
