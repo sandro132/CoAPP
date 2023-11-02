@@ -49,7 +49,10 @@ const Registrar = () => {
       const respuesta = await axios.post('http://localhost:4000/api/usuarios', { nombre, correo, contraseña })
       console.log(respuesta)
     } catch (error) {
-        console.log(error)
+      setAlerta({
+        msg: error.response.data.msg,
+        error: true
+      });
     }
 
 }
@@ -91,45 +94,10 @@ const Registrar = () => {
           <input
             id="nombre"
             type="text"
-            placeholder="Introduce tu nombre"
             placeholder="Introduce tu nombre completo"
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
             value={nombre}
             onChange={(e) => setNombre(e.target.value)}
-          />
-        </div>
-
-        <div className="my-5">
-          <label
-            className="uppercase text-gray-600 block text-xl font-bold"
-            htmlFor="numeroIdentidad"
-          >
-            Numero de identidad
-          </label>
-          <input
-            id="numeroIdentidad"
-            type="text"
-            placeholder="Numero de identidad"
-            className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
-            value={numeroIdentidad}
-            onChange={(e) => setNumeroIdentidad(e.target.value)}
-          />
-        </div>
-
-        <div className="my-5">
-          <label
-            className="uppercase text-gray-600 block text-xl font-bold"
-            htmlFor="celular"
-          >
-            Celular
-          </label>
-          <input
-            id="celular"
-            type="text"
-            placeholder="celular"
-            className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
-            value={celular}
-            onChange={(e) => setCelular(e.target.value)}
           />
         </div>
 
@@ -159,9 +127,7 @@ const Registrar = () => {
           </label>
           <span className="icon-eye"></span>
           <input
-            placeholder="Introduce tu contraseña "
             id="contraseña"
-            type="contraseña"
             type="password"
             placeholder="Introduce tu contraseña"
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
