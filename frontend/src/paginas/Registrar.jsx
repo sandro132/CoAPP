@@ -82,7 +82,7 @@ const Registrar = () => {
         className="my-10 bg-white shadow rounder-lg p-10"
         onSubmit={handleSubmit}
       >
-        <Drop value={tipoUsuario} />
+        <Drop />
         <div className="my-5">
           <label
             className="uppercase text-gray-600 block text-xl font-bold"
