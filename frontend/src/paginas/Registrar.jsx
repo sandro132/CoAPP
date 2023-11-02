@@ -10,16 +10,16 @@ import clienteAxios from '../config/clienteAxios';
 const Registrar = () => {
 
   // const [tipoUsuario, setTipoUsuario] = useState("")
-  const [nombre, setNombre] = useState('')
-  const [correo, setCorreo] = useState('')
-  const [contraseña, setContraseña] = useState('')
-  const [repetircontraseña, setRepetirContraseña] = useState('')
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [repetirpassword, setRepetirPassword] = useState('')
   const [alerta, setAlerta] = useState({})
   
   const handleSubmit = async e => {
     e.preventDefault();
 
-    if([nombre, correo, contraseña, repetircontraseña].includes('')) {
+    if([name, email, password, repetirpassword].includes('')) {
       setAlerta({
         msg: 'Todos los campos son obligatorios',
         error: true
@@ -27,7 +27,7 @@ const Registrar = () => {
       return
     }
 
-    if(contraseña != repetircontraseña ) {
+    if(password != repetirpassword ) {
       setAlerta({
         msg: 'Las contraseñas no son iguales',
         error: true
@@ -35,7 +35,7 @@ const Registrar = () => {
       return
     }
 
-    if(contraseña.length < 6 ) {
+    if(password.length < 6 ) {
       setAlerta({
         msg: 'La contraseña es muy corta, minimo 6 carateres',
         error: true
@@ -49,7 +49,7 @@ const Registrar = () => {
     try { 
       const { data } = await clienteAxios.post(
         `/usuarios`,
-        { nombre, correo, contraseña }
+        { name, email, password }
       );
       
       setAlerta({
@@ -57,10 +57,10 @@ const Registrar = () => {
         error: false
       })
 
-      setNombre('')
-      setCorreo('')
-      setContraseña('')
-      setRepetirContraseña('')
+      setName('')
+      setEmail('')
+      setPassword('')
+      setRepetirPassword('')
       
     } catch (error) {
       setAlerta({
@@ -106,12 +106,12 @@ const Registrar = () => {
             Nombre
           </label>
           <input
-            id="nombre"
+            id="name"
             type="text"
             placeholder="Introduce tu nombre completo"
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
-            value={nombre}
-            onChange={(e) => setNombre(e.target.value)}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
         </div>
 
@@ -123,12 +123,12 @@ const Registrar = () => {
             Correo
           </label>
           <input
-            id="correo"
+            id="email"
             type="email"
             placeholder="nombre@correo.com"
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
-            value={correo}
-            onChange={(e) => setCorreo(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
 
@@ -141,12 +141,12 @@ const Registrar = () => {
           </label>
           <span className="icon-eye"></span>
           <input
-            id="contraseña"
+            id="password"
             type="password"
             placeholder="Introduce tu contraseña"
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
-            value={contraseña}
-            onChange={(e) => setContraseña(e.target.value)}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
 
@@ -158,12 +158,12 @@ const Registrar = () => {
             Repetir Contraseña
           </label>
           <input
-            id="contraseña2"
+            id="password2"
             type="password"
             placeholder="Repetir tu contraseña"
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
-            value={repetircontraseña}
-            onChange={(e) => setRepetirContraseña(e.target.value)}
+            value={repetirpassword}
+            onChange={(e) => setRepetirPassword(e.target.value)}
           />
         </div>
 
