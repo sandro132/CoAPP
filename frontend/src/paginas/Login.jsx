@@ -32,7 +32,7 @@ const Login = () => {
           <input
             id="email"
             type="email"
-            placeholder="Email de Registro "
+            placeholder="nombre@correo.com"
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
           />
         </div>
@@ -47,7 +47,7 @@ const Login = () => {
           <input
             id="password"
             type="password"
-            placeholder="Password de Registro "
+            placeholder="Introduce tu contraseña"
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
           />
         </div>
