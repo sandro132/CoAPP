@@ -30,7 +30,7 @@ const OlvidePassword = () => {
           <input
             id="email"
             type="email"
-            placeholder="Email de Registro "
+            placeholder="nombre@correo.com"
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
           />
         </div>
@@ -54,8 +54,7 @@ const OlvidePassword = () => {
           className="block text-center my-5 text-slate-500 uppercase text-sm"
           to="registrar"
         >
-          ¿No tienes una cuenta?{" "}
-          <span className="text-sky-900">Registrate aquí</span>
+          Reestablece tu password
         </Link>
       </nav>
     </>

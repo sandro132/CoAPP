@@ -13,6 +13,22 @@ function Drop() {
   const seleccionarOpcion = (opcion) => {
     setOpcionSeleccionada(opcion);
     setDropdown(false); // Cerrar el dropdown después de seleccionar
+    return (
+    
+        <Dropdown isOpen={dropdown} toggle={abrirCerrarDropdown} size="lg"> 
+            <DropdownToggle caret className='DropdownButton'>
+                Selecciona...
+            </DropdownToggle>
+  
+            <DropdownMenu>
+                <DropdownItem>Profesional</DropdownItem>
+                <DropdownItem>Empresa</DropdownItem>
+        
+            </DropdownMenu>
+  
+        </Dropdown>
+      
+    )
   }
 
   return (
