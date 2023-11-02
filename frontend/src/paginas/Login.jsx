@@ -1,6 +1,28 @@
-import { Link } from "react-router-dom";
+import { useState } from 'react'
+import { Link, useNavigate } from "react-router-dom";
+import Alerta from "../components/Alerta";
+import clienteAxios from "../config/clienteAxios";
+
 
 const Login = () => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [alerta, setAlerta] = useState({})
+  
+  const handleSubmit = async e => {
+    e.preventDefault();
+
+    if ([email, password].includes('')) {
+      setAlerta({
+        msg: 'Todos los campos son obligatorios',
+        error: true
+      });
+      return
+    }
+  }
+
+  const { msg } = alerta
+
   return (
     <>
       <div>
@@ -21,7 +43,13 @@ const Login = () => {
         </h1>
       </div>
 
-      <form className="my-10 bg-white shadow rounder-lg p-10">
+      {msg && <Alerta alerta={alerta}/> }
+
+      <form
+        className="my-10 bg-white shadow rounder-lg p-10"
+        onSubmit={handleSubmit}
+      
+      >
         <div className="my-5">
           <label
             className="uppercase text-gray-600 block text-xl font-bold"
@@ -34,6 +62,8 @@ const Login = () => {
             type="email"
             placeholder="nombre@correo.com"
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
 
@@ -49,6 +79,8 @@ const Login = () => {
             type="password"
             placeholder="Introduce tu contraseña"
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
 
