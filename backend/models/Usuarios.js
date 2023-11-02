@@ -5,7 +5,7 @@ const usuarioSchema = mongoose.Schema(
     {
         tipoUsuario: {
             type: String,
-            required: true,
+            required: false,
             enum: ["profesional", "empresa", "administrador"], // Valores permitidos
         },
         nombre: {
