@@ -5,10 +5,10 @@ import { emailRegistro, emailOlvidePassword } from "../helpers/email.js"
 
 const registrar = async (req, res) => {
     // Const para verificacion de correo
-    const { correo } = req.body;
+    const { email } = req.body;
 
     // Evitar registros duplicados
-    const existeUsuario = await Usuario.findOne({ correo });
+    const existeUsuario = await Usuario.findOne({ email });
 
     if(existeUsuario) {
         const error = new Error("usuario ya registrados");
@@ -22,8 +22,8 @@ const registrar = async (req, res) => {
         
         // Enviar Email confirmacion
         emailRegistro({
-            correo: usuario.correo,
-            nombre: usuario.nombre,
+            email: usuario.email,
+            name: usuario.name,
             token: usuario.token
         })
         res.json({ msg: "Usuario Creado Correctamente, Revisa tu Correo para confirmar tu cuenta" });
@@ -33,10 +33,10 @@ const registrar = async (req, res) => {
 }
 
 const autenticar = async (req, res) => {
-    const { correo, contraseña } = req.body;
+    const { email, password } = req.body;
 
     // Comprobar existencia del usuario en las 3 bases
-    const usuario = await Usuario.findOne({ correo });
+    const usuario = await Usuario.findOne({ email });
     if (!usuario) {
         const error = new Error("El Usuario no existe");
         return res.status(404).json({ msg: error.message });
@@ -47,11 +47,11 @@ const autenticar = async (req, res) => {
         return res.status(403).json({ msg: error.message });
     }
     // Comprobar password
-    if(await usuario.comprobarContraseña(contraseña)) {
+    if(await usuario.comprobarContraseña(password)) {
         res.json({
             _id: usuario._id,
-            nombre: usuario.nombre,
-            correo: usuario.correo,
+            name: usuario.name,
+            email: usuario.email,
             token: generarJWT(usuario._id),
         })
     } else {
@@ -79,8 +79,8 @@ const confirmar = async (req, res) => {
 };
 
 const olvidePassword = async (req, res) => {
-    const { correo } = req.body
-    const usuario = await Usuario.findOne({ correo });
+    const { email } = req.body
+    const usuario = await Usuario.findOne({ email });
     if(!usuario) {
         const error = new Error("El usuario no existe");
         return res.status(404).json({ msg: error.message });
@@ -92,8 +92,8 @@ const olvidePassword = async (req, res) => {
 
         // Enviar el email
         emailOlvidePassword({
-            nombre: usuario.nombre,
-            correo: usuario.correo,
+            name: usuario.name,
+            email: usuario.email,
             token: usuario.token,
         })
         res.json({ msg: "Hemos enviado un correo con las instrucciones" })
@@ -117,12 +117,12 @@ const comprobarToken = async (req, res) => {
 
 const nuevoPassword = async (req, res) => {
     const { token } = req.params;
-    const { contraseña } = req.body;
+    const { password } = req.body;
 
     const usuario = await Usuario.findOne({ token });
 
     if(usuario) {
-        usuario.contraseña = contraseña;
+        usuario.password = password;
         usuario.token = "";
         try {
             await usuario.save();
