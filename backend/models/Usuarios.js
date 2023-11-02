@@ -3,23 +3,23 @@ import bcrypt from "bcrypt";
 
 const usuarioSchema = mongoose.Schema(
     {
-        tipoUsuario: {
+        typeUser: {
             type: String,
             required: false,
             enum: ["profesional", "empresa", "administrador"], // Valores permitidos
         },
-        nombre: {
+        name: {
             type: String,
             require: true,
             trim: true // Elimina espacios de incio y fin
         },
         
-        contraseña: {
+        password: {
             type: String,
             require: true,
             trim: true
         },
-        correo: {
+        email: {
             type: String,
             require: true,
             trim: true,
@@ -47,12 +47,12 @@ usuarioSchema.pre("save", async function(next) {
         next()
     };
     const salt = await bcrypt.genSalt(10);
-    this.contraseña = await bcrypt.hash(this.contraseña, salt);
+    this.password = await bcrypt.hash(this.password, salt);
 });
 
 // Verifica si la contraseña escrita coincide con la de la base de datos
 usuarioSchema.methods.comprobarContraseña = async function (contraseñaFormulario) {
-    return await bcrypt.compare(contraseñaFormulario, this.contraseña)
+    return await bcrypt.compare(contraseñaFormulario, this.password)
 };
 
 const Usuario = mongoose.model("Usuarios", usuarioSchema)

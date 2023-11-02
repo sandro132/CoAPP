@@ -11,7 +11,7 @@ const checkAut = async (req, res, next) => {
 
             const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-            req.usuario = await Usuario.findById(decoded.id).select("-contraseña -confirmado -token -createdAt -updatedAt -__v");
+            req.usuario = await Usuario.findById(decoded.id).select("-password -confirmado -token -createdAt -updatedAt -__v");
 
             return next()
         } catch (error) {

@@ -1,7 +1,7 @@
 import nodemailer from "nodemailer";
 
 export const emailRegistro = async (datos) => {
-    const { correo, nombre, token } = datos;
+    const { email, name, token } = datos;
 
     // TODO: Mover a variables de entorno
 
@@ -18,10 +18,10 @@ export const emailRegistro = async (datos) => {
 
     const info = await transport.sendMail({
         from: '"Coally - Administrador " <cuentas@coallycorp.com>',
-        to: correo,
+        to: email,
         subject: "Coally - Comprueba tu cuenta",
         text: "Comprueba tu cuenta en Coally",
-        html: `<p>Hola: ${nombre}, Comprueba tu cuenta en Coally </p>
+        html: `<p>Hola: ${name}, Comprueba tu cuenta en Coally </p>
         <p>Tu cuenta ya esta casi lista, solo debes comprobarla en el siguinte enlace:
         
         <a href="${process.env.FRONTEND_URL}/confirmar/${token}">Comprobar Cuenta</a></p>
@@ -33,7 +33,7 @@ export const emailRegistro = async (datos) => {
 };
 
 export const emailOlvidePassword = async (datos) => {
-    const { correo, nombre, token } = datos;
+    const { email, name, token } = datos;
 
     // TODO: Mover a variables de entorno
     const transport = nodemailer.createTransport({
@@ -49,10 +49,10 @@ export const emailOlvidePassword = async (datos) => {
 
     const info = await transport.sendMail({
         from: '"Coally - Administrador " <cuentas@coallycorp.com>',
-        to: correo,
+        to: email,
         subject: "Coally - Cmprueba tu cuenta",
         text: "Comprueba tu cuenta en Coally",
-        html: `<p>Hola: ${nombre}, Comprueba tu cuenta en Coally </p>
+        html: `<p>Hola: ${name}, Comprueba tu cuenta en Coally </p>
         <p>Tu cuenta ya esta casi lista, solo debes comprobarla en el siguinte enlace:
         
         <a href="${process.env.FRONTEND_URL}/confirmar/${token}">Comprobar Cuenta</a></p>
