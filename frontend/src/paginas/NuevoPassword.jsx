@@ -23,7 +23,7 @@ const NuevoPassword = () => {
         setTokenValido(true)
       } catch (error) {
         setAlerta({
-          msg: error.response.data.msg
+          msg: error.response.data.msg,
           error: true
         })
 
@@ -42,24 +42,24 @@ const NuevoPassword = () => {
       })
       return
     }
+  
+
+    try {
+      const url = `/usuarios/olvide-password/${token}`
+
+      const { data } = await clienteAxios.post(url, { password })
+      setAlerta({
+        msg: data.msg,
+        error: false
+      })
+      setpasswordModificado(true)
+    } catch (error) {
+      setAlerta({
+        msg: error.response.data.msg,
+        error: true
+      })
+    }
   }
-
-  try {
-    const url = `/usuarios/olvide-password/${token}`
-
-    const { data } = await clienteAxios.post(url, {password})
-    setAlerta({
-      msg: data.msg,
-      error: false
-    })
-    setpasswordModificado(true)
-  } catch (error) {
-    setAlerta({
-      msg: error.response.data.msg,
-      error: true
-    })
-  }
-
   const { msg } = alerta
 
   return (
