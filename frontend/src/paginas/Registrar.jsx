@@ -7,7 +7,7 @@ import axios from 'axios';
 
 
 const Registrar = () => {
-  const [tipoUsuario, setTipoUsuario] = useState("")
+
   const [nombre, setNombre] = useState('')
   const [numeroIdentidad, setNumeroIdentidad] = useState("")
   const [celular, setCelular] = useState("")
@@ -98,7 +98,7 @@ const Registrar = () => {
         className="my-10 bg-white shadow rounder-lg p-10"
         onSubmit={handleSubmit}
       >
-        <Drop value={tipoUsuario} />
+        <Drop />
         <div className="my-5">
           <label
             className="uppercase text-gray-600 block text-xl font-bold"
@@ -109,7 +109,7 @@ const Registrar = () => {
           <input
             id="nombre"
             type="text"
-            placeholder="Nombre Completo"
+            placeholder="Introduce tu nombre"
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
             value={nombre}
             onChange={(e) => setNombre(e.target.value)}
@@ -126,7 +126,7 @@ const Registrar = () => {
           <input
             id="numeroIdentidad"
             type="text"
-            placeholder="numeroIdentidad"
+            placeholder="Numero de identidad"
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
             value={numeroIdentidad}
             onChange={(e) => setNumeroIdentidad(e.target.value)}
@@ -176,9 +176,9 @@ const Registrar = () => {
           </label>
           <span className="icon-eye"></span>
           <input
+            placeholder="Introduce tu contraseña "
             id="contraseña"
             type="contraseña"
-            placeholder="contraseña de Registro "
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
             value={contraseña}
             onChange={(e) => setContraseña(e.target.value)}
