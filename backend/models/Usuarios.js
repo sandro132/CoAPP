@@ -13,17 +13,7 @@ const usuarioSchema = mongoose.Schema(
             require: true,
             trim: true // Elimina espacios de incio y fin
         },
-        numeroIdentidad: {
-            type: Number,
-            require: true,
-            trim: true,
-            },
         
-        celular: {
-            type: Number,
-            require: true,
-            trim: true,
-        },
         contraseña: {
             type: String,
             require: true,
@@ -36,7 +26,6 @@ const usuarioSchema = mongoose.Schema(
             unique: true //Garantiza que no sea un correo ya registrado
         },
 
-    //    direccion: Address,
         
         token: {
             type: String

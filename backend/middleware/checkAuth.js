@@ -1,9 +1,9 @@
-import jwt, { decode } from "jsonwebtoken"
+import jwt from "jsonwebtoken"
 import Usuario from "../models/Usuarios.js";
 
 const checkAut = async (req, res, next) => {
     let token;
-    if (req.headers.authorization && req.headers.authorization.startsWith("Bearer")
+    if (req.headers.authorization && req.headers.authorization.startsWith("Bearer") //Bearer significa que si se esta enviando un token al header 
     ) {
 
         try {
