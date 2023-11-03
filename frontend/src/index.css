@@ -12,3 +12,11 @@
 .DropdownButton:hover{
     background-color: #fA7400;
 }
+
+.body{
+    @apply bg-primary;
+}
+
+.debug {
+    border: 1px solid red
+}
