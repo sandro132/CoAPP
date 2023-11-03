@@ -6,6 +6,9 @@
     background-color: #fA7400;
 }
 
+.debug{
+    border: 1px solid red
+}
 .DropdownButton:hover{
     background-color: #fA7400;
 }
