@@ -1,9 +1,9 @@
-import jwt, { decode } from "jsonwebtoken"
+import jwt from "jsonwebtoken"
 import Usuario from "../models/Usuarios.js";
 
 const checkAut = async (req, res, next) => {
     let token;
-    if (req.headers.authorization && req.headers.authorization.startsWith("Bearer")
+    if (req.headers.authorization && req.headers.authorization.startsWith("Bearer") //Bearer significa que si se esta enviando un token al header 
     ) {
 
         try {
@@ -11,7 +11,7 @@ const checkAut = async (req, res, next) => {
 
             const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-            req.usuario = await Usuario.findById(decoded.id).select("-contraseña -confirmado -token -createdAt -updatedAt -__v");
+            req.usuario = await Usuario.findById(decoded.id).select("-password -confirmado -token -createdAt -updatedAt -__v");
 
             return next()
         } catch (error) {
