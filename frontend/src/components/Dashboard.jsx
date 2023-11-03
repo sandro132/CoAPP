@@ -1,12 +1,13 @@
-
+import BotonActualizar from "../components/BotonActualizar";
 
 const Dashboard = () => {
   return (
-    <main className="p-5  grow  bg-white my-2 mr-2 rounded-3xl">
-      <div>
+    <main className="p-5 grow bg-white my-2 mr2 rounded-3xl ">
+      <div className="flex justify-center items-center">
         <h1 className="text-color:#393939 font-black text-2xl flex p-4 ">
           Dashboard Holberton - Coally
         </h1>
+        <BotonActualizar />
       </div>
 
       <div className="flex gap-5">
