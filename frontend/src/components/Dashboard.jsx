@@ -1,12 +1,14 @@
-
+import BotonActualizar from "../components/BotonActualizar";
+import React from "react";
 
 const Dashboard = () => {
   return (
     <main className="border-4 border-blue-800 shadow-lg p-5  bg-white my-2 mx-3 rounded-3xl">
-      <div>
+      <div className="flex items-center justify-between">
         <h1 className="text-color:#393939  font-black text-2xl flex p-4 ">
           Dashboard Holberton - Coally
         </h1>
+        <BotonActualizar />
       </div>
 
       <div className="flex gap-3 max-w-4xl ">
