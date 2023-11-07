@@ -1,5 +1,5 @@
 import BotonActualizar from "../components/BotonActualizar";
-import React from "react";
+
 
 const Dashboard = () => {
   return (
@@ -11,8 +11,8 @@ const Dashboard = () => {
         <BotonActualizar />
       </div>
 
-      <div className="flex gap-3 max-w-4xl ">
-        <div className="bg-orange-400 text-white  p-3 flex items-center gap-1 flex-row rounded-tl-3xl rounded-br-3xl rounded-tr-md rounded-bl-md ">
+      <div className="grow flex gap-3 max-w-4xl ">
+        <div className="bg-orange-400 text-white  p-3 grow flex items-center gap-1 flex-row rounded-tl-3xl rounded-br-3xl rounded-tr-md rounded-bl-md ">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -29,10 +29,10 @@ const Dashboard = () => {
           </svg>
           <div>
             <h3>Ultima Actualización</h3>
-            <h2 className="font-bold text-2xl leading-4">10/10/2023</h2>
+            <h2 className="font-bold text-2xl leading-5">10/10/2023</h2>
           </div>
         </div>
-        <div className="bg-orange-400 text-white p-3 flex items-center gap-2 flex-row rounded-tr-3xl rounded-bl-3xl rounded-tl-md rounded-br-md">
+        <div className="bg-orange-400 text-white p-3 grow flex items-center gap-2 flex-row rounded-tr-3xl rounded-bl-3xl rounded-tl-md rounded-br-md">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -50,10 +50,10 @@ const Dashboard = () => {
 
           <div>
             <h3>Registros Actuales</h3>
-            <h2 className="font-bold text-2xl leading-4">1500</h2>
+            <h2 className="font-bold text-2xl leading-5">1500</h2>
           </div>
         </div>
-        <div className="bg-orange-400 text-white p-3 flex items-center gap-2 flex-row rounded-tl-3xl rounded-br-3xl rounded-tr-md rounded-bl-md">
+        <div className="bg-orange-400 text-white p-3 grow flex items-center gap-2 flex-row rounded-tl-3xl rounded-br-3xl rounded-tr-md rounded-bl-md">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -71,10 +71,10 @@ const Dashboard = () => {
 
           <div>
             <h3>Profesionales</h3>
-            <h2 className="font-bold text-2xl leading-4">450</h2>
+            <h2 className="font-bold text-2xl leading-5">450</h2>
           </div>
         </div>
-        <div className="bg-orange-400 text-white p-3 flex items-center gap-2 flex-row rounded-tr-3xl rounded-bl-3xl rounded-tl-md rounded-br-md">
+        <div className="bg-orange-400 text-white p-3 grow flex items-center gap-2 flex-row rounded-tr-3xl rounded-bl-3xl rounded-tl-md rounded-br-md">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -92,11 +92,14 @@ const Dashboard = () => {
 
           <div>
             <h3>Empresas</h3>
-            <h2 className="font-bold text-2xl leading-4">93</h2>
+            <h2 className="font-bold text-2xl leading-5">93</h2>
           </div>
         </div>
       </div>
+      <div>
+      </div>
     </main>
+    
   );
 }
 

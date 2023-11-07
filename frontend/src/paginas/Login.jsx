@@ -100,6 +100,16 @@ const Login = () => {
             />
           </div>
 
+          <nav>
+            {" "}
+            <Link
+              className="block text-center my-5 text-slate-500 uppercase text-sm "
+              to="/olvide-password"
+            >
+              Olvide Mi Contraseña{" "}
+            </Link>
+          </nav>
+
           <input
             type="submit"
             value="Iniciar Sesión"
@@ -114,12 +124,6 @@ const Login = () => {
           >
             ¿No tienes una cuenta?{" "}
             <span className="text-sky-900">Registrate aquí</span>
-          </Link>
-          <Link
-            className="block text-center my-5 text-slate-500 uppercase text-sm "
-            to="/olvide-password"
-          >
-            Olvide Mi Contraseña{" "}
           </Link>
         </nav>
       </div>
