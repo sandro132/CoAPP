@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import Alerta from "../components/Alerta";
 import clienteAxios from "../config/clienteAxios";
 import useAuth from "../hooks/useAuth";
+import {AiFillEye} from "react-icons/ai"
+import {AiFillEyeInvisible} from "react-icons/ai"
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -37,6 +39,8 @@ const Login = () => {
       });
     }
   };
+
+  const [showPwd, setShowPwd] = useState(false)
   const { msg } = alerta;
 
   return (
@@ -90,14 +94,19 @@ const Login = () => {
             >
               Contraseña
             </label>
-            <input
+            <div className="flex flex-row items-center justify-center">
+             <input
               id="password"
-              type="password"
+              type={showPwd ? "text" : "password"}
               placeholder="Introduce tu contraseña"
               className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+            <div onClick={() => setShowPwd(!showPwd)} >
+              {showPwd ? <AiFillEye className='text-2xl ml-2 text-gray-600' /> : <AiFillEyeInvisible className='debug text-2xl ml-2 text-gray-600'  />}
+            </div>
+            </div>
           </div>
 
           <nav>

@@ -150,8 +150,8 @@ const Registrar = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             />
-            <div onClick={() => setShowPwd(!showPwd)}>
-            {showPwd ? <AiFillEye className='text-2xl ml-2 text-gray-600' /> : <AiFillEyeInvisible className='debug text-2xl ml-2 text-gray-600'  />}
+            <div onClick={() => setShowPwd(!showPwd)} >
+            {showPwd ? <AiFillEye className='text-2xl ml-2 text-gray-600' /> : <AiFillEyeInvisible className='text-2xl ml-2 text-gray-600'  />}
           </div>
         </div>
           
@@ -173,12 +173,11 @@ const Registrar = () => {
             value={repetirpassword}
             onChange={(e) => setRepetirPassword(e.target.value)}
           />
-          <div onClick={() => setShowPwd(!showPwd)}>
-            {showPwd ? <AiFillEye className='text-2xl ml-2 text-gray-600' /> : <AiFillEyeInvisible className='debug text-2xl ml-2 text-gray-600'  />}
+            <div placeholder='' onClick={() => setShowPwd(!showPwd)}>
+              {showPwd ? <AiFillEye className='text-2xl ml-2 text-gray-600' /> : <AiFillEyeInvisible className='text-2xl ml-2 text-gray-600'  />}
+            </div>
           </div>
-        
-          </div>
-          </div>
+        </div>
 
         <input
           type="submit"
