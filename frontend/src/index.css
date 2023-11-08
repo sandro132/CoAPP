@@ -20,3 +20,73 @@
 .debug {
     border: 1px solid red
 }
+
+.GrafiCosCirc{
+    display: flex; flex-direction:row; width:100%; justify-content:center;
+     align-items:center; flex-wrap: wrap;
+}
+
+.GrafiCosCirc .graphBox01{
+    border: 1px solid gray;
+    border-radius: 20px;
+    margin: 20px 10px;
+}
+
+/*MICHIS*/
+
+svg rect{fill:transparent;}
+
+.loginBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.loginForm{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.loginRegistro{min-width: 380px;}
+.loginForm form{width: 100%; border-radius: 14px;}
+
+.loginForm form.p-10 {
+    padding: 1rem 1.5rem !important;
+}
+
+.loginForm form.my-10 {
+    margin-top: 1.2rem !important;
+    margin-bottom: 0.8rem !important;
+
+}
+
+.loginRegistro form.p-10 {
+    padding: 1rem 1.5rem !important;
+}
+
+.loginRegistro form .my-5 {
+    margin-top: 1.2rem !important;
+    margin-bottom: 0.8rem !important;
+
+}
+
+.botonFormRegistro{
+    margin-bottom: 0 !important;
+    margin-top: 14px !important;
+}
+
+
+.container{
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.dataBoxesUp{flex-wrap: wrap;}
+.navegacionIzquierda{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 40px;
+}

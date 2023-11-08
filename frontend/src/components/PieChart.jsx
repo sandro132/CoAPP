@@ -1,42 +1,56 @@
 import { Chart } from "react-google-charts";
 export const data = [
   ["Task", "Hours per Day"],
-  ["Work", 11],
-  ["Eat", 2],
+  ["Vacantes", 11],
+  ["Perfiles Profesionales", 2],
 ];
 export const data2 = [
   ["Task", "Hours per Day"],
-  ["Work", 11],
-  ["Eat", 2],
- 
+  ["Profesionales", 11],
+  ["Empresas", 2],
 ];
 export const options = {
-  title: "My Daily Activities",
+  title: "Grafico 1",
+  legend: { position: "bottom", textStyle: { color: "black", fontSize: 12 } },
+  slices: {
+    0: { color: "#d9d9d9" },
+    1: { color: "#fb923c" },
+  },
 };
 
 export const options2 = {
-  title: "My Daily Activities",
+  title: "Grafico 2",
+  legend: { position: "bottom", textStyle: { color: "black", fontSize: 12 } },
+  slices: {
+    0: { color: "#d9d9d9" },
+    1: { color: "#fb923c" },
+  },
 };
 
 const charts = () => {
-    return (
-      <>
-        <Chart
-          chartType="PieChart"
-          data={data}
-          options={options}
-          width={"100%"}
-          height={"400px"}
-        />
-
-        <Chart
-          chartType="PieChart"
-          data={data2}
-          options={options2}
-          width={"100%"}
-          height={"400px"}
-        />
-      </>
-    );
+  return (
+    <>
+      <div className="GrafiCosCirc">
+        <div className="graphBox01">
+          <Chart
+            chartType="PieChart"
+            data={data}
+            options={options}
+            width={"100%"}
+            height={"400px"}
+          />
+        </div>
+        <div className="graphBox01">
+          <Chart
+            chartType="PieChart"
+            data={data2}
+            options={options2}
+            width={"100%"}
+            height={"400px"}
+          />
+        </div>
+      </div>
+    </>
+  );
 };
 export default charts;

@@ -12,7 +12,7 @@ const Dashboard = () => {
         <BotonActualizar />
       </div>
 
-      <div className="grow flex gap-3 max-w-4xl ">
+      <div className="grow flex gap-3 max-w-4xl dataBoxesUp">
         <div className="bg-orange-400 text-white  p-3 grow flex items-center gap-1 flex-row rounded-tl-3xl rounded-br-3xl rounded-tr-md rounded-bl-md ">
           <svg
             xmlns="http://www.w3.org/2000/svg"
