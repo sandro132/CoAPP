@@ -171,7 +171,7 @@ const Registrar = () => {
             placeholder="Repetir tu contraseña"
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
             value={repetirpassword}
-            onChange={(e) => setRepetirPassword(e.target.value)}
+            onChange={(e) => setRepetirPassword(e.target.value)}  
           />
           <div onClick={() => setShowPwd(!showPwd)}>
             {showPwd ? <AiFillEye className='text-2xl ml-2 text-gray-600' /> : <AiFillEyeInvisible className='debug text-2xl ml-2 text-gray-600'  />}
