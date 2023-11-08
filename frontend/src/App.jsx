@@ -7,6 +7,7 @@ import NuevoPassword from "./paginas/NuevoPassword"
 import ConfirmarCuenta from "./paginas/ConfirmarCuenta"
 import {AuthProvider} from './context/AuthProvider'
 import PaginaPrincipal from "./paginas/PaginaPrincipal"
+import PagProfesional from "./paginas/PagProfesional"
 
 
 console.log(import.meta.env.VITE_BACKEND_URL)
@@ -17,7 +18,8 @@ function App() {
         <Routes>
           <Route path="/" element={<AuthLayout />}>
             <Route index element={<Login />} />
-            <Route path="pagina-principal" element={<PaginaPrincipal/>} />
+            <Route path="pagina-principal" element={<PaginaPrincipal />} />
+            <Route path="pag-profesional" element={<PagProfesional />} /> 
             <Route path="registrar" element={<Registrar />} />
             <Route path="olvide-password" element={<OlvidePassword />} />
             <Route path="olvide-password/:token" element={<NuevoPassword />} />
