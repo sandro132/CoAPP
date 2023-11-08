@@ -40,8 +40,8 @@ const Login = () => {
   const { msg } = alerta;
 
   return (
-    <div className="mx-8 max-w-lg">
-      <div>
+    <div className="loginBox">
+      <div className="loginForm">
         <div>
           <img
             className="display:flex align-items:center justify-content:center"

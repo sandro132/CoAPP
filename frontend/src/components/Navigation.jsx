@@ -14,8 +14,8 @@ const Navigation = () => {
         data-nimg="1"
       />
 
-      <nav>
-        <a
+      <nav className="navegacionIzquierda">
+        <nav><a
           href=""
           className="bg-white flex items-center text-primary gap-2 px-3 py-1 mb-2 rounded-xl"
         >
@@ -34,9 +34,10 @@ const Navigation = () => {
             />
           </svg>
           <span>Dashboard</span>
-        </a>
+        </a></nav>
+        
 
-        <div className="h-screen  justify-items-end">
+        <div className="justify-items-end">
           <div className="">
             <a
               href=""
