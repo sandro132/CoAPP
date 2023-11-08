@@ -112,7 +112,7 @@ const Login = () => {
           <nav>
             {" "}
             <Link
-              className="block text-center my-5 text-slate-500 uppercase text-sm "
+              className="block text-left my-3 text-slate-500 uppercase text-sm "
               to="/olvide-password"
             >
               Olvide Mi Contraseña{" "}
@@ -128,7 +128,7 @@ const Login = () => {
 
         <nav className="lg:flex lg:justify-between center">
           <Link
-            className="block text-center my-5 text-slate-500 uppercase text-sm"
+            className="block text-center my-2 text-slate-500 uppercase text-sm"
             to="registrar"
           >
             ¿No tienes una cuenta?{" "}

@@ -5,7 +5,7 @@ import Navigation from "../components/Navigation";
 const PaginaPrincipal = () => {
     return (
       <div className="grow flex min-h-screen">
-            <Navigation />
+        <Navigation />
         <Dashboard />
         
         

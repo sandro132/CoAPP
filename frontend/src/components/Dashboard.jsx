@@ -1,4 +1,5 @@
 import BotonActualizar from "../components/BotonActualizar";
+import PieChart from "./PieChart";
 
 
 const Dashboard = () => {
@@ -97,6 +98,9 @@ const Dashboard = () => {
         </div>
       </div>
       <div>
+      </div>
+      <div>
+        <PieChart/>
       </div>
     </main>
     
