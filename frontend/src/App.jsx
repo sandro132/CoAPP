@@ -19,8 +19,7 @@ function App() {
           <Route path="/" element={<AuthLayout />}>
             <Route index element={<Login />} />
             <Route path="pagina-principal" element={<PaginaPrincipal />} />
-            <Route path="pag-profesional" element={<PagProfesional />} />
-            
+            <Route path="pag-profesional" element={<PagProfesional />} /> 
             <Route path="registrar" element={<Registrar />} />
             <Route path="olvide-password" element={<OlvidePassword />} />
             <Route path="olvide-password/:token" element={<NuevoPassword />} />
