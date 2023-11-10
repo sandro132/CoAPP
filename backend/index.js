@@ -12,26 +12,26 @@ dotenv.config()
 conectarDB();
 
 // configurar cors
+app.use(cors());
+// const whitelist = [process.env.FRONTEND_URL];
 
-const whitelist = [process.env.FRONTEND_URL];
+// const corsOptions = {
+//     origin: function(origin, callback) {
+//         if(whitelist.includes(origin)) {
+//             // Puede constultar la API
+//             callback(null, true);
+//         } else {
+//             // No puede consultar la API
+//             callback(new Error("Acceso no permitido por CORS"));
+//         }
+//     },
+// };
 
-const corsOptions = {
-    origin: function(origin, callback) {
-        if(whitelist.includes(origin)) {
-            // Puede constultar la API
-            callback(null, true);
-        } else {
-            // No puede consultar la API
-            callback(new Error("Error de Cors"));
-        }
-    },
-};
-
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 // Routing
 app.use('/api/usuarios', router)
-
+//TODO;
 
 const PORT = process.env.PORT || 4000
 
