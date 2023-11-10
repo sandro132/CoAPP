@@ -4,13 +4,9 @@ import Navigation from "../components/Navigation";
 
 const PaginaPrincipal = () => {
     return (
-      <div className="grow flex min-h-screen">
+      <div className="grow flex flex-col md:flex-row lg:flex-row min-h-screen ">
         <Navigation />
         <Dashboard />
-        
-        
-            
-    
       </div>
     );
 }
