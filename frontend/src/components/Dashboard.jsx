@@ -1,13 +1,20 @@
 import BotonActualizar from "../components/BotonActualizar";
 import PieChart from "./PieChart";
+import data from "./datos.json";
 
+const data02 = {
+  Actualizado: "10/10/2023",
+  Registros_Actuales: 1500,
+  Profesionales: 450,
+  Empresas: 93,
+};
 
 const Dashboard = () => {
   return (
-    <main className="border-4 border-blue-800 shadow-lg p-5  bg-white my-2 mx-3 rounded-3xl">
+    <main className=" shadow-lg p-5  bg-white my-2 mx-3 rounded-2xl">
       <div className="flex items-center justify-between">
         <h1 className="text-color:#393939  font-black text-2xl flex p-4 ">
-          Dashboard Holberton - Coally
+          Dashboard Holberton - Coally 
         </h1>
         <BotonActualizar />
       </div>
@@ -30,7 +37,9 @@ const Dashboard = () => {
           </svg>
           <div>
             <h3>Ultima Actualización</h3>
-            <h2 className="font-bold text-2xl leading-5">10/10/2023</h2>
+            <h2 className="font-bold text-2xl leading-5">
+              {data02.Actualizado}
+            </h2>
           </div>
         </div>
         <div className="bg-orange-400 text-white p-3 grow flex items-center gap-2 flex-row rounded-tr-3xl rounded-bl-3xl rounded-tl-md rounded-br-md">
@@ -51,7 +60,9 @@ const Dashboard = () => {
 
           <div>
             <h3>Registros Actuales</h3>
-            <h2 className="font-bold text-2xl leading-5">1500</h2>
+            <h2 className="font-bold text-2xl leading-5">
+              {data02.Registros_Actuales}
+            </h2>
           </div>
         </div>
         <div className="bg-orange-400 text-white p-3 grow flex items-center gap-2 flex-row rounded-tl-3xl rounded-br-3xl rounded-tr-md rounded-bl-md">
@@ -72,7 +83,9 @@ const Dashboard = () => {
 
           <div>
             <h3>Profesionales</h3>
-            <h2 className="font-bold text-2xl leading-5">450</h2>
+            <h2 className="font-bold text-2xl leading-5">
+              {data02.Profesionales}
+            </h2>
           </div>
         </div>
         <div className="bg-orange-400 text-white p-3 grow flex items-center gap-2 flex-row rounded-tr-3xl rounded-bl-3xl rounded-tl-md rounded-br-md">
@@ -93,18 +106,16 @@ const Dashboard = () => {
 
           <div>
             <h3>Empresas</h3>
-            <h2 className="font-bold text-2xl leading-5">93</h2>
+            <h2 className="font-bold text-2xl leading-5">{data02.Empresas}</h2>
           </div>
         </div>
       </div>
+      <div></div>
       <div>
-      </div>
-      <div>
-        <PieChart/>
+        <PieChart />
       </div>
     </main>
-    
   );
-}
+};
 
-export default Dashboard
+export default Dashboard;

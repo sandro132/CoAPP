@@ -1,13 +1,43 @@
 import { Chart } from "react-google-charts";
+// import data from './pruebaChart.json'
+
+// const data01 = [{data.datosGrafico1}]
+// const data0x = [
+//   {
+//     _id: null,
+//     counts: [
+//       {
+//         department: "Cleaning",
+//         number: 1,
+//       },
+//       {
+//         department: "Engineering",
+//         number: 2,
+//       },
+//       {
+//         department: "Transportation",
+//         number: 1,
+//       },
+//     ],
+//   },
+// ];
+
+// let data3 = [];
+// data3.push(["Element", "Density", { role: "style" }]);
+// data01[0].counts.forEach((item) =>
+//   data3.push([item.department, item.number, ""])
+// );
+// console.log(data3);
+
 export const data = [
   ["Task", "Hours per Day"],
-  ["Vacantes", 11],
-  ["Perfiles Profesionales", 2],
+  ["Vacantes", 50],
+  ["Perfiles Profesionales", 5],
 ];
 export const data2 = [
   ["Task", "Hours per Day"],
-  ["Profesionales", 11],
-  ["Empresas", 2],
+  ["Profesionales", 70],
+  ["Empresas", 4],
 ];
 export const options = {
   title: "Grafico 1",

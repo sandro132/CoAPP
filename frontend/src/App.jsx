@@ -8,6 +8,7 @@ import ConfirmarCuenta from "./paginas/ConfirmarCuenta"
 import {AuthProvider} from './context/AuthProvider'
 import PaginaPrincipal from "./paginas/PaginaPrincipal"
 import PagProfesional from "./paginas/PagProfesional"
+import PieChart from "./components/PieChart";
 
 
 console.log(import.meta.env.VITE_BACKEND_URL)

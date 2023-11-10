@@ -43,6 +43,8 @@ const OlvidePassword = () => {
 
   return (
     <>
+      <div className="loginBox">
+      <div className="loginForm"> 
       <div>
         <img
           className="display:flex align-items:center justify-content:center"
@@ -104,7 +106,9 @@ const OlvidePassword = () => {
         >
           Reestablece tu password
         </Link>
-      </nav>
+          </nav>
+        </div>
+      </div>
     </>
   );
 }
