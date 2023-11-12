@@ -64,6 +64,8 @@ const NuevoPassword = () => {
 
   return (
     <>
+      <div className="loginBox">
+      <div className="loginForm"> 
       <div>
         <img
           className="display:flex align-items:center justify-content:center"
@@ -77,7 +79,7 @@ const NuevoPassword = () => {
         />
       </div>
       <h1 className="text-color:#393939 font-black text-4xl flex ">
-        Reestablece tu password
+        Restablece tu Password
       </h1>
 
       {msg && <Alerta alerta={alerta}/>}
@@ -121,7 +123,9 @@ const NuevoPassword = () => {
           ¿Ya tienes una cuenta?{" "}
           <span className="text-sky-900">Inicia Sesión</span>
         </Link>  
-      )}
+          )}
+        </div>
+        </div>
     </>
   );
 };
