@@ -17,10 +17,7 @@ async function visualizarTrabajos() {
         sessionId: "UNKNOWN"
       },
       jobQuery: {
-        query: "backend",
-        locationFilters: {
-          addresses: ['Colombia']
-        }
+        query: "sales",
       }
       // Puedes personalizar la solicitud según tus necesidades
       // Más detalles sobre las opciones de búsqueda: https://cloud.google.com/talent-solution/job-search/docs/reference/rest/v4/projects.jobs/search
