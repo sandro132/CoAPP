@@ -19,6 +19,7 @@ export function ColumnP() {
             width="100%"
             height="400px"
             data={data}
+            
           />
         </div>
       </div>
