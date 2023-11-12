@@ -45,7 +45,7 @@ link:(https://github.com/sandro132/CoAPP)
 1. Clone the repository on your local machine:
 
    ```bash
-   git clone <REPOSITORY_URL>
+   git clone <https://github.com/sandro132/CoAPP>
    cd Frontend
    ```
 
@@ -103,7 +103,7 @@ link:(https://github.com/sandro132/CoAPP)
 1. Clone the repository on your local machine:
 
    ```bash
-   git clone <REPOSITORY_URL>
+   git clone <https://github.com/sandro132/CoAPP>
    cd Backend
    ```
 
