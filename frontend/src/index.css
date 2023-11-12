@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.DropdownButton{
+    background-color: #fA7400;
+}
+
+.debug{
+    border: 1px solid red
+}
+.DropdownButton:hover{
+    background-color: #fA7400;
+}
+
+.body{
+    @apply bg-primary;
+}
+
+.debug {
+    border: 1px solid red
+}
+
+.GrafiCosCirc{
+    display: flex; 
+    flex-direction:row; 
+    width:100%; justify-content:center;
+     align-items:center; flex-wrap: wrap;
+}
+
+.GrafiCosCirc .graphBox01{
+    border: 1px solid gray;
+    /*border-radius: 20px;*/
+    margin: 20px 10px;
+}
+
+/*MICHIS*/
+
+/*.reactgooglegraph-01 svg rect:first-of-type{fill:transparent;}*/
+#reactgooglegraph-1 svg rect:nth-child(0) {fill:none;}
+/*.reactgooglegraph-01 svg > rect:first-child{fill:transparent;}*/
+
+
+.loginBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.loginForm{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.loginRegistro{min-width: 380px;}
+.loginForm form{width: 100%; border-radius: 14px;}
+
+.loginForm form.p-10 {
+    padding: 1rem 1.5rem !important;
+}
+
+.loginForm form.my-10 {
+    margin-top: 1.2rem !important;
+    margin-bottom: 0.8rem !important;
+
+}
+
+.loginRegistro form.p-10 {
+    padding: 1rem 1.5rem !important;
+}
+
+.loginRegistro form .my-5 {
+    margin-top: 1.2rem !important;
+    margin-bottom: 0.8rem !important;
+
+}
+
+.botonFormRegistro{
+    margin-bottom: 0 !important;
+    margin-top: 14px !important;
+}
+
+
+.container{
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.dataBoxesUp{flex-wrap: wrap;}
+.navegacionIzquierda{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 40px;
+}
+
+.graficosBarrasProDash{
+    flex-wrap: wrap;
+}
+
+/*.graficosBarras svg rect{fill:initial;}*/
+
+
+@media only screen and (max-width:500px){
+main.mx-3, aside.mx-3{
+    margin: 12px 0 !important;
+}
+}
+
+
+/*.graficosBarras svg rect{fill:initial;}*/
+
