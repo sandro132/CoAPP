@@ -102,3 +102,13 @@
 
 /*.graficosBarras svg rect{fill:initial;}*/
 
+
+@media only screen and (max-width:500px){
+main.mx-3, aside.mx-3{
+    margin: 12px 0 !important;
+}
+}
+
+
+/*.graficosBarras svg rect{fill:initial;}*/
+

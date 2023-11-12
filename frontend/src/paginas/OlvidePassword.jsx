@@ -100,12 +100,6 @@ const OlvidePassword = () => {
           ¿Ya tienes una cuenta?{" "}
           <span className="text-sky-900">Inicia Sesión</span>
         </Link>
-        <Link
-          className="block text-center my-5 text-slate-500 uppercase text-sm"
-          to="registrar"
-        >
-          Reestablece tu password
-        </Link>
           </nav>
         </div>
       </div>

@@ -20,10 +20,6 @@ const DashProfesional = () => {
           <h2 className="text-color:#393939 font-black ">Habilidades</h2>
           <ColumnLen />
         </div>
-        <div>
-          <h2 className="text-color:#393939 font-black">Ubicación</h2>
-          <PieChartP />
-        </div>
       </div>
     </main>
   );
