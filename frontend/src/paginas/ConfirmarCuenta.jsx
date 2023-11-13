@@ -39,6 +39,20 @@ const ConfirmarCuenta = () => {
 
   return (
     <>
+      <div className="loginBox">
+      <div className="loginForm"> 
+      <div>
+        <img
+          className="display:flex align-items:center justify-content:center"
+          src="https://coally-images.s3.amazonaws.com/logo-coally-n.png"
+          alt="Logo Coally"
+          loading="lazy"
+          width="250"
+          height="115"
+          decoding="async"
+          data-nimg="1"
+        />
+      </div>
       <h1 className="text-color:#393939 font-black text-4xl flex ">
         Confirma tu Cuenta
       </h1>
@@ -54,6 +68,8 @@ const ConfirmarCuenta = () => {
             <span className="text-sky-900">Inicia Sesión</span>
           </Link>
         )}
+          </div>
+        </div>
       </div>
     </>
   );
