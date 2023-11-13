@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import Alerta from "../components/Alerta";
 import clienteAxios from "../config/clienteAxios";
 import useAuth from "../hooks/useAuth";
-import Union from "../components/Union";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -93,10 +92,14 @@ const Login = () => {
             >
               Contraseña
               </label>
-              <span className="icon-eye"></span>
-              <div className="flex flex-row items-center justify-center">
-                 <Union />
-            </div>
+              <input
+                id="password"
+                type="password"
+                placeholder="Introduce tu contraseña"
+                className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
           </div>
 
           <nav>
