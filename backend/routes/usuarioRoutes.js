@@ -11,6 +11,6 @@ router.post("/login", autenticar);
 router.get("/confirmar/:token", confirmar);
 router.post("/olvide-password", olvidePassword);
 router.route("/olvide-password/:token").get(comprobarToken).post(nuevoPassword);
-// router.route("/pagina-principal").get(searchJobs); //TODO: post sample complete query
-//checkAuth, perfil
+router.get("/pagina-principal", checkAuth, perfil); //TODO: post sample complete query
+//searchJobs
 export default router;
