@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from 'reactstrap';
 
-function Drop() {
+function Drop({ onTipoUsuarioSeleccionado }) {
   const [dropdown, setDropdown] = useState(false);
   const [opcionSeleccionada, setOpcionSeleccionada] = useState("Selecciona...");
 
@@ -13,25 +13,10 @@ function Drop() {
   const seleccionarOpcion = (opcion) => {
     setOpcionSeleccionada(opcion);
     setDropdown(false); // Cerrar el dropdown después de seleccionar
-    return (
-    
-        <Dropdown isOpen={dropdown} toggle={abrirCerrarDropdown} size="lg"> 
-            <DropdownToggle caret className='DropdownButton'>
-                Selecciona...
-            </DropdownToggle>
-  
-            <DropdownMenu>
-                <DropdownItem>Profesional</DropdownItem>
-                <DropdownItem>Empresa</DropdownItem>
-        
-            </DropdownMenu>
-  
-        </Dropdown>
-      
-    )
+    onTipoUsuarioSeleccionado(opcion)
   }
 
-  return (
+return (
     <Dropdown isOpen={dropdown} toggle={abrirCerrarDropdown} size="lg">
       <DropdownToggle caret className='DropdownButton'>
         {opcionSeleccionada}
