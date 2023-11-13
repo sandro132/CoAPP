@@ -11,7 +11,7 @@ import PagProfesional from "./paginas/PagProfesional"
 import PieChart from "./components/PieChart";
 
 
-console.log(import.meta.env.VITE_BACKEND_URL)
+//console.log(import.meta.env.VITE_BACKEND_URL)
 function App() {
   return (
     <BrowserRouter>
