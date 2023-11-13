@@ -41,9 +41,9 @@ const usuarioSchema = mongoose.Schema(
 );
 
 
-// Este codigo se ejecutara antes de almacenar en la base de datos
+// Hasheo
 usuarioSchema.pre("save", async function(next) {
-    if(!this.isModified("contraseña")) { // al llamar la funcion no se esta modificando la contraseña, no se ejecutara el hasheo
+    if(!this.isModified("password")) { // al llamar la funcion no se esta modificando la contraseña, no se ejecutara el hasheo
         next()
     };
     const salt = await bcrypt.genSalt(10);

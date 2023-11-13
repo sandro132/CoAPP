@@ -34,9 +34,12 @@ const registrar = async (req, res) => {
 
 const autenticar = async (req, res) => {
     const { email, password } = req.body;
+    console.log(email, password)
 
-    // Comprobar existencia del usuario en las 3 bases
-    const usuario = await Usuario.findOne({ email });
+    // Comprobar existencia del usuario
+    const usuario = await Usuario.findOne({email});
+    console.log(usuario)
+
     if (!usuario) {
         const error = new Error("El Usuario no existe");
         return res.status(404).json({ msg: error.message });
@@ -61,8 +64,11 @@ const autenticar = async (req, res) => {
 }
 
 const confirmar = async (req, res) => {
-    const { token } = req.params
+    const { token } = req.params;
     const usuarioConfirmar = await Usuario.findOne({ token });
+    console.log(token)
+    console.log(usuarioConfirmar)
+    
     if(!usuarioConfirmar) {
         const error = new Error("Token no valido");
         return res.status(403).json({ msg: error.message })
@@ -81,6 +87,7 @@ const confirmar = async (req, res) => {
 const olvidePassword = async (req, res) => {
     const { email } = req.body
     const usuario = await Usuario.findOne({ email });
+
     if(!usuario) {
         const error = new Error("El usuario no existe");
         return res.status(404).json({ msg: error.message });
@@ -139,7 +146,7 @@ const nuevoPassword = async (req, res) => {
 
 const perfil = async (req, res) => {
     const { usuario } = req;
-
+// configurar el tipo usuario
     res.json(usuario);
 }
 
