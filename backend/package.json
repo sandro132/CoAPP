@@ -38,7 +38,7 @@
 
   "dependencies": {
 
-    "@google-cloud/storage": "^7.5.0",
+    "@google-cloud/storage": "^7.6.0",
 
     "@google-cloud/talent": "^6.0.1",
 
@@ -62,11 +62,11 @@
 
     "jsonwebtoken": "^9.0.2",
 
-    "mongoose": "^7.6.3",
+    "mongoose": "^7.6.4",
 
     "nodemailer": "^6.9.7",
 
-    "require": "^0.4.4",
+    "require": "^0.4.9",
 
     "sdk": "^0.0.0"
 
