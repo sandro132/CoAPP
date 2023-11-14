@@ -109,8 +109,8 @@ const Login = () => {
             {" "}
             <Link
               className="block text-left my-3 text-slate-500 uppercase text-sm "
-              to={navigate}
-            >
+              to="/olvide-password"
+              >
               Olvide Mi Contraseña{" "}
             </Link>
           </nav>
@@ -119,6 +119,7 @@ const Login = () => {
               type="submit"
               value="Iniciar Sesión"
               className="bg-orange-400 mb-2 w-full py-3 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-orange-500 transition-colors"
+              to={navigate}
             />
         </form>
 

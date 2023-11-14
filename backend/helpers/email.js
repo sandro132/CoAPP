@@ -13,9 +13,9 @@ export const emailRegistro = async (datos) => {
             pass: "a23593ad4ce055"
         }
     });
-
+    
     // INF correo
-
+    
     const info = await transport.sendMail({
         from: '"Coally - Administrador " <cuentas@coallycorp.com>',
         to: email,
@@ -34,7 +34,7 @@ export const emailRegistro = async (datos) => {
 
 export const emailOlvidePassword = async (datos) => {
     const { email, name, token } = datos;
-
+    
     // TODO: Mover a variables de entorno
     const transport = nodemailer.createTransport({
         host: "sandbox.smtp.mailtrap.io",
@@ -44,19 +44,19 @@ export const emailOlvidePassword = async (datos) => {
             pass: "a23593ad4ce055"
         }
     });
-
+    
     // INF correo
-
+    
     const info = await transport.sendMail({
         from: '"Coally - Administrador " <cuentas@coallycorp.com>',
         to: email,
-        subject: "Coally - Cmprueba tu cuenta",
-        text: "Comprueba tu cuenta en Coally",
-        html: `<p>Hola: ${name}, Comprueba tu cuenta en Coally </p>
-        <p>Tu cuenta ya esta casi lista, solo debes comprobarla en el siguinte enlace:
+        subject: "Coally - Reestablece tu password",
+        text: "Reestablece tu password",
+        html: `<p>Hola: ${name}, Has solicitado Reestablecer tu password </p>
+        <p>Sigue el siguinte enlace para generar un nuevo password:
         
-        <a href="${process.env.FRONTEND_URL}/confirmar/${token}">Comprobar Cuenta</a></p>
-        <p>Si no creaste esta cuenta, puedes ignorar el mensaje</p>
+        <a href="${process.env.FRONTEND_URL}/olvide-password/${token}">Reestablece tu password</a></p>
+        <p>Si tu no solicitaste este email, puedes ignorar el mensaje</p>
         
         
         `

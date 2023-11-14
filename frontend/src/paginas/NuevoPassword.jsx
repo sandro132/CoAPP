@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Alerta from "../components/Alerta";
 import clienteAxios from "../config/clienteAxios";
@@ -10,7 +10,7 @@ const NuevoPassword = () => {
   const [tokenValido, setTokenValido] = useState(false)
   const [alerta, setAlerta] = useState({})
   const [passwordModificado, setpasswordModificado] = useState(false)
-
+  const navigate = useNavigate()
   const params = useParams()
   const { token } = params
 
@@ -53,6 +53,7 @@ const NuevoPassword = () => {
         error: false
       })
       setpasswordModificado(true)
+      navigate("/")
     } catch (error) {
       setAlerta({
         msg: error.response.data.msg,
@@ -111,6 +112,7 @@ const NuevoPassword = () => {
             type="submit"
             value="Guardar Nuevo Password"
             className="bg-orange-400 mb-5 w-full py-3 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-orange-500 transition-colors"
+            to={navigate}
           />
         </form>
       )}
