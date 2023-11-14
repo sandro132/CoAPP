@@ -18,7 +18,7 @@ const AuthProvider = ({ children }) => {
                 Headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`
-                }
+                }//TODO: Aca podria organizar el Auth de tipo de usuario
             }
 
 
