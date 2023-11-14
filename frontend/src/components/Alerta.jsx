@@ -3,7 +3,7 @@ const Alerta = ({alerta}) => {
       <div
         className={`${
           alerta.error
-            ? "from-orange-600 to-orange-600"
+            ? "from-orange-500 to-orange-500"
             : "from-sky-800 to-sky-800"
         }  bg-gradient-to-r text-center p-3  uppercase text-white font-bold text-sm my-10  mb-2 w-full py-3   rounded `}
       >
