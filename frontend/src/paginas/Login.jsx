@@ -1,14 +1,15 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Alerta from "../components/Alerta";
 import clienteAxios from "../config/clienteAxios";
 import useAuth from "../hooks/useAuth";
+import { redirect } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [alerta, setAlerta] = useState({});
-
+  const navigate = useNavigate()
   const { setAuth } = useAuth();
 
   const handleSubmit = async (e) => {
@@ -30,12 +31,14 @@ const Login = () => {
       setAlerta({});
       localStorage.setItem("token", data.token);
       setAuth(data);
-    } catch (error) {
+      navigate("/pagina-principal")
+      } catch (error) {
       setAlerta({
         msg: error.response.data.msg,
         error: true,
       });
     }
+
   };
 
   const [showPwd, setShowPwd] = useState(false)
@@ -106,26 +109,24 @@ const Login = () => {
             {" "}
             <Link
               className="block text-left my-3 text-slate-500 uppercase text-sm "
-              to="/olvide-password"
+              to={navigate}
             >
               Olvide Mi Contraseña{" "}
             </Link>
           </nav>
 
-          <Link to="/pagina-principal">
             <input
               type="submit"
               value="Iniciar Sesión"
               className="bg-orange-400 mb-2 w-full py-3 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-orange-500 transition-colors"
             />
-          </Link>
         </form>
 
         <nav className="lg:flex lg:justify-between center">
           <Link
             className="block text-center my-2 text-slate-500 uppercase text-sm"
             to="registrar"
-          >
+            >
             ¿No tienes una cuenta?{" "}
             <span className="text-sky-900">Registrate aquí</span>
           </Link>
