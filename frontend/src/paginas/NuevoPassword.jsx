@@ -11,14 +11,8 @@ const NuevoPassword = () => {
   const [tokenValido, setTokenValido] = useState(false);
   const [alerta, setAlerta] = useState({});
   const [passwordModificado, setpasswordModificado] = useState(false);
-
-  const [password, setPassword] = useState('')
-  const [tokenValido, setTokenValido] = useState(false)
-  const [alerta, setAlerta] = useState({})
-  const [passwordModificado, setpasswordModificado] = useState(false)
   const navigate = useNavigate()
 
- 
   // Get the token from the URL parameters using the useParams hook.
   const params = useParams();
   const { token } = params;
@@ -70,8 +64,6 @@ const NuevoPassword = () => {
       // Set the password modification status as true.
       setpasswordModificado(true)
       navigate("/")
-        error: false,
-      });
 
     } catch (error) {
       // If there's an error, set the alert state with an error message.
@@ -135,14 +127,6 @@ const NuevoPassword = () => {
                 />
               </div>
               {/* Submit button */}
-              <input
-                type="submit"
-                value="Guardar Nuevo Password"
-                className="bg-orange-400 mb-5 w-full py-3 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-orange-500 transition-colors"
-              />
-            </form>
-          )}
-
           <input
             type="submit"
             value="Guardar Nuevo Password"
