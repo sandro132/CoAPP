@@ -1,9 +1,10 @@
 // Import necessary React components and libraries.
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Alerta from "../components/Alerta";
 import clienteAxios from "../config/clienteAxios";
 import useAuth from "../hooks/useAuth";
+import { redirect } from "react-router-dom";
 
 // Define the Login component.
 const Login = () => {
@@ -11,6 +12,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [alerta, setAlerta] = useState({});
+  const navigate = useNavigate()
 
   // Use the custom useAuth hook to access authentication-related functions.
   const { setAuth } = useAuth();
@@ -40,6 +42,7 @@ const Login = () => {
       localStorage.setItem("token", data.token);
       // Set the authentication status using the useAuth hook.
       setAuth(data);
+      navigate("/pagina-principal")
     } catch (error) {
       // If there's an error, set the alert state with an error message.
       setAlerta({
@@ -47,6 +50,7 @@ const Login = () => {
         error: true,
       });
     }
+
   };
 
   // const [showPwd, setShowPwd] = useState(false);
@@ -127,7 +131,7 @@ const Login = () => {
             <Link
               className="block text-left my-3 text-slate-500 uppercase text-sm "
               to="/olvide-password"
-            >
+              >
               Olvide Mi Contraseña{" "}
             </Link>
           </nav>
@@ -138,8 +142,8 @@ const Login = () => {
               type="submit"
               value="Iniciar Sesión"
               className="bg-orange-400 mb-2 w-full py-3 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-orange-500 transition-colors"
+              to={navigate}
             />
-          </Link>
         </form>
 
         {/* Navigation link to registration page */}
@@ -147,7 +151,7 @@ const Login = () => {
           <Link
             className="block text-center my-2 text-slate-500 uppercase text-sm"
             to="registrar"
-          >
+            >
             ¿No tienes una cuenta?{" "}
             <span className="text-sky-900">Registrate aquí</span>
           </Link>

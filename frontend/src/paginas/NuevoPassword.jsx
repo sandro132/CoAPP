@@ -1,5 +1,5 @@
 // Import necessary React components and libraries.
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Alerta from "../components/Alerta";
 import clienteAxios from "../config/clienteAxios";
@@ -12,6 +12,13 @@ const NuevoPassword = () => {
   const [alerta, setAlerta] = useState({});
   const [passwordModificado, setpasswordModificado] = useState(false);
 
+  const [password, setPassword] = useState('')
+  const [tokenValido, setTokenValido] = useState(false)
+  const [alerta, setAlerta] = useState({})
+  const [passwordModificado, setpasswordModificado] = useState(false)
+  const navigate = useNavigate()
+
+ 
   // Get the token from the URL parameters using the useParams hook.
   const params = useParams();
   const { token } = params;
@@ -58,10 +65,14 @@ const NuevoPassword = () => {
       // Set the alert state with a success message.
       setAlerta({
         msg: data.msg,
+        error: false
+      })
+      // Set the password modification status as true.
+      setpasswordModificado(true)
+      navigate("/")
         error: false,
       });
-      // Set the password modification status as true.
-      setpasswordModificado(true);
+
     } catch (error) {
       // If there's an error, set the alert state with an error message.
       setAlerta({
@@ -132,15 +143,24 @@ const NuevoPassword = () => {
             </form>
           )}
 
-          {/* Display a link to log in if the password is successfully modified */}
-          {passwordModificado && (
-            <Link
-              className="block text-center my-5 text-slate-500 uppercase text-sm"
-              to="/"
-            >
-              ¿Ya tienes una cuenta?{" "}
-              <span className="text-sky-900">Inicia Sesión</span>
-            </Link>
+          <input
+            type="submit"
+            value="Guardar Nuevo Password"
+            className="bg-orange-400 mb-5 w-full py-3 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-orange-500 transition-colors"
+            to={navigate}
+          />
+        </form>
+      )}
+
+      {/* Display a link to log in if the password is successfully modified */}
+      {passwordModificado && (
+        <Link
+          className="block text-center my-5 text-slate-500 uppercase text-sm"
+          to="/"
+        >
+          ¿Ya tienes una cuenta?{" "}
+          <span className="text-sky-900">Inicia Sesión</span>
+        </Link>  
           )}
         </div>
       </div>
