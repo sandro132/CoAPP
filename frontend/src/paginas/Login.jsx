@@ -1,19 +1,25 @@
+// Import necessary React components and libraries.
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Alerta from "../components/Alerta";
 import clienteAxios from "../config/clienteAxios";
 import useAuth from "../hooks/useAuth";
 
+// Define the Login component.
 const Login = () => {
+  // Define states for managing email and password inputs, alerts, and authentication status.
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [alerta, setAlerta] = useState({});
 
+  // Use the custom useAuth hook to access authentication-related functions.
   const { setAuth } = useAuth();
 
+  // Handle the form submission to perform user login.
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Validate that both email and password are provided.
     if ([email, password].includes("")) {
       setAlerta({
         msg: "Todos los campos son obligatorios",
@@ -23,14 +29,19 @@ const Login = () => {
     }
 
     try {
+      // Make a request to the server to perform user login.
       const { data } = await clienteAxios.post("/usuarios/login", {
         email,
         password,
       });
+      // Clear any existing alerts.
       setAlerta({});
+      // Store the authentication token in the local storage.
       localStorage.setItem("token", data.token);
+      // Set the authentication status using the useAuth hook.
       setAuth(data);
     } catch (error) {
+      // If there's an error, set the alert state with an error message.
       setAlerta({
         msg: error.response.data.msg,
         error: true,
@@ -38,13 +49,16 @@ const Login = () => {
     }
   };
 
-  const [showPwd, setShowPwd] = useState(false)
+  // const [showPwd, setShowPwd] = useState(false);
+  // Destructure the message from the alert.
   const { msg } = alerta;
 
+  // Render the Login component.
   return (
     <div className="loginBox">
       <div className="loginForm">
         <div>
+          {/* Logo of the application */}
           <img
             className="display:flex align-items:center justify-content:center"
             src="https://coally-images.s3.amazonaws.com/logo-coally-n.png"
@@ -57,17 +71,21 @@ const Login = () => {
           />
         </div>
         <div>
+          {/* Title of the form */}
           <h1 className="text-color:#393939  font-black text-4xl flex ">
             ¡Bienvenido de nuevo!
           </h1>
         </div>
 
+        {/* Display the alert if there's a message */}
         {msg && <Alerta alerta={alerta} />}
 
+        {/* Login form */}
         <form
           className="my-10 bg-white shadow rounder-lg p-10 "
           onSubmit={handleSubmit}
         >
+          {/* Email input field */}
           <div className="my-2 ">
             <label
               className="uppercase text-gray-600 block text-xl font-bold"
@@ -85,6 +103,7 @@ const Login = () => {
             />
           </div>
 
+          {/* Password input field */}
           <div className="my-2">
             <label
               className="uppercase text-gray-600 block text-xl font-bold"
@@ -102,6 +121,7 @@ const Login = () => {
             />
           </div>
 
+          {/* Link to reset password */}
           <nav>
             {" "}
             <Link
@@ -112,6 +132,7 @@ const Login = () => {
             </Link>
           </nav>
 
+          {/* Submit button */}
           <Link to="/pagina-principal">
             <input
               type="submit"
@@ -121,6 +142,7 @@ const Login = () => {
           </Link>
         </form>
 
+        {/* Navigation link to registration page */}
         <nav className="lg:flex lg:justify-between center">
           <Link
             className="block text-center my-2 text-slate-500 uppercase text-sm"
@@ -135,4 +157,5 @@ const Login = () => {
   );
 };
 
+// Export the Login component
 export default Login;
