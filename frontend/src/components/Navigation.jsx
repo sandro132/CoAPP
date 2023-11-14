@@ -41,7 +41,7 @@ const Navigation = () => {
         <div className="justify-items-end">
           <div className="">
             <a
-              href=""
+              href="."
               className="block px-3 py-1 mb-2 flex items-center gap-2 "
             >
               <svg

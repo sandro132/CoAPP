@@ -1,9 +1,15 @@
 const Alerta = ({alerta}) => {
     return (
-        <div className={`${alerta.error ? 'from-orange-400 to-orange-600' : 'from-sky-400 to - sky - 600'} bg-gradient-to-br text-cente p-3 rounded-xl uppercase text-white font-bold text-sm my-10 `}>
-            {alerta.msg}
-        </div>
-    )
+      <div
+        className={`${
+          alerta.error
+            ? "from-orange-500 to-orange-500"
+            : "from-sky-800 to-sky-800"
+        }  bg-gradient-to-br text-center p-3  uppercase text-white font-bold text-sm my-10  mb-2 w-full py-3   rounded `}
+      >
+        {alerta.msg}
+      </div>
+    );
 }
 
 export default Alerta

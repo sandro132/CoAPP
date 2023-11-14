@@ -8,7 +8,7 @@ import Union from '../components/Union';
 
 const Registrar = () => {
 
-  // const [tipoUsuario, setTipoUsuario] = useState("")
+  const [typeUser, setTypeUser] = useState("")
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -18,7 +18,7 @@ const Registrar = () => {
   const handleSubmit = async e => {
     e.preventDefault();
 
-    console.log(password)
+    console.log(typeUser)
     console.log(repetirpassword)
 
     if([name, email, password, repetirpassword].includes('')) {
@@ -52,7 +52,7 @@ const Registrar = () => {
     try { 
       const { data } = await clienteAxios.post(
         `/usuarios`,
-        { name, email, password }
+        { name, email, password, typeUser }
       );
       
       setAlerta({
@@ -64,7 +64,8 @@ const Registrar = () => {
       setEmail('')
       setPassword('')
       setRepetirPassword('')
-      
+      setTypeUser('')
+
     } catch (error) {
       setAlerta({
         msg: error.response.data.msg,
@@ -102,7 +103,8 @@ const Registrar = () => {
             className="my-10 bg-white shadow rounder-lg p-10"
             onSubmit={handleSubmit}
           >
-            <Drop />
+            <Drop onTipoUsuarioSeleccionado={(tipoUsuario) => setTypeUser(tipoUsuario)} />
+
             <div className="my-5">
               <label
                 className="uppercase text-gray-600 block text-xl font-bold"

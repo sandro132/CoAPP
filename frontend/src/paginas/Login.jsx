@@ -91,15 +91,15 @@ const Login = () => {
               htmlFor="password"
             >
               Contraseña
-              </label>
-              <input
-                id="password"
-                type="password"
-                placeholder="Introduce tu contraseña"
-                className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
+            </label>
+            <input
+              id="password"
+              type="password"
+              placeholder="Introduce tu contraseña"
+              className="w-full mt-3 p-3 border rounded-xl bg-gray-50"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </div>
 
           <nav>
@@ -112,11 +112,13 @@ const Login = () => {
             </Link>
           </nav>
 
-          <input
-            type="submit"
-            value="Iniciar Sesión"
-            className="bg-orange-400 mb-2 w-full py-3 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-orange-500 transition-colors"
-          />
+          <Link to="/pagina-principal">
+            <input
+              type="submit"
+              value="Iniciar Sesión"
+              className="bg-orange-400 mb-2 w-full py-3 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-orange-500 transition-colors"
+            />
+          </Link>
         </form>
 
         <nav className="lg:flex lg:justify-between center">
