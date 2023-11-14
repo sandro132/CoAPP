@@ -137,13 +137,12 @@ const Login = () => {
           </nav>
 
           {/* Submit button */}
-          <Link to="/pagina-principal">
-            <input
-              type="submit"
-              value="Iniciar Sesión"
-              className="bg-orange-400 mb-2 w-full py-3 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-orange-500 transition-colors"
-              to={navigate}
-            />
+          <input
+            type="submit"
+            value="Iniciar Sesión"
+            className="bg-orange-400 mb-2 w-full py-3 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-orange-500 transition-colors"
+            to={navigate}
+          />
         </form>
 
         {/* Navigation link to registration page */}
