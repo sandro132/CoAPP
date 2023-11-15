@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Alerta from "../components/Alerta";
 import clienteAxios from "../config/clienteAxios";
 import useAuth from "../hooks/useAuth";
-import { redirect } from "react-router-dom";
+
 
 // Define the Login component.
 const Login = () => {
