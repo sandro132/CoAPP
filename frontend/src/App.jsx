@@ -9,7 +9,7 @@ import {AuthProvider} from './context/AuthProvider'
 import PaginaPrincipal from "./paginas/PaginaPrincipal"
 import PagProfesional from "./paginas/PagProfesional"
 import PieChart from "./components/PieChart";
-
+import Empresa from "./paginas/Empresa"
 
 //console.log(import.meta.env.VITE_BACKEND_URL)
 function App() {
@@ -19,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<AuthLayout />}>
             <Route index element={<Login />} />
+            <Route path="empresa" element={<Empresa />} />
             <Route path="pagina-principal" element={<PaginaPrincipal />} />
             <Route path="pag-profesional" element={<PagProfesional />} /> 
             <Route path="registrar" element={<Registrar />} />
