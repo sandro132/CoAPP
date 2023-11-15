@@ -9,6 +9,7 @@ import { redirect } from "react-router-dom";
 // Define the Login component.
 const Login = () => {
   // Define states for managing email and password inputs, alerts, and authentication status.
+  const [rolUser, setRolUser] = useState("")
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [alerta, setAlerta] = useState({});
@@ -23,7 +24,7 @@ const Login = () => {
 
     // Validate that both email and password are provided.
     if ([email, password].includes("")) {
-      setAlerta({
+      setAlerta({ 
         msg: "Todos los campos son obligatorios",
         error: true,
       });
@@ -41,8 +42,19 @@ const Login = () => {
       // Store the authentication token in the local storage.
       localStorage.setItem("token", data.token);
       // Set the authentication status using the useAuth hook.
-      setAuth(data);
-      navigate("/pagina-principal")
+      setAuth({...data, rolUser: data?.typeUser});
+      setRolUser(data.typeUser)
+      
+      if(data.typeUser === "Administrador") {
+        navigate("/pagina-principal")
+      } else if(data.typeUser === "Profesional"){
+        navigate("/pag-profesional")
+      } else if(data.typeUser === "Profesional"){
+        navigate("/empresa")
+      } else {
+        navigate('/login')
+      };
+    
     } catch (error) {
       // If there's an error, set the alert state with an error message.
       setAlerta({

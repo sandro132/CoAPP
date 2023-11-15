@@ -1,5 +1,4 @@
-// 
-
+// Crecion de id del usuario
 const generarId = () => {
     // Id Numero random + fecha actual del perfil
     const random = Math.random().toString(32).substring(2);

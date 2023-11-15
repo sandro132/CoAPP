@@ -1,5 +1,6 @@
 import nodemailer from "nodemailer";
 
+// Correo de Autenticacion del usuario
 export const emailRegistro = async (datos) => {
     const { email, name, token } = datos;
 
@@ -32,6 +33,8 @@ export const emailRegistro = async (datos) => {
     })
 };
 
+
+// Correo de recuperacion de contraseña
 export const emailOlvidePassword = async (datos) => {
     const { email, name, token } = datos;
     
