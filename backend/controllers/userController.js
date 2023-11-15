@@ -3,6 +3,7 @@ import generarId from "../helpers/generarId.js"
 import generarJWT from "../helpers/generarJWT.js"
 import { emailRegistro, emailOlvidePassword } from "../helpers/email.js" 
 
+
 const registrar = async (req, res) => {
     // Const para verificacion de correo
     const { email } = req.body;
@@ -16,6 +17,7 @@ const registrar = async (req, res) => {
     };
 
     try {
+        // Creacion de usuario y almacenamiento en mongodb
         const usuario = new Usuario(req.body);
         usuario.token = generarId();
         await usuario.save();
@@ -53,6 +55,7 @@ const autenticar = async (req, res) => {
             _id: usuario._id,
             name: usuario.name,
             email: usuario.email,
+            typeUser: usuario.typeUser,
             token: generarJWT(usuario._id),
         })
     } else {
@@ -62,26 +65,26 @@ const autenticar = async (req, res) => {
 }
 
 const confirmar = async (req, res) => {
-    const { token } = req.params;
-    const usuarioConfirmar = await Usuario.findOne({ token });
-    console.log(token)
-    console.log(usuarioConfirmar)
-    
-    if(!usuarioConfirmar) {
-        const error = new Error("Token no valido");
-        return res.status(403).json({ msg: error.message })
-    };
-
     try {
-        usuarioConfirmar.confirmado = true;
-        usuarioConfirmar.token = "";
-        await usuarioConfirmar.save();
-        res.json({ msg: "Usuario Confirmado Correctamente" });
+        const { token } = req.params;
+        const usuarioConfirmar = await Usuario.findOne({ token });
+        
+        if(usuarioConfirmar) {
+            // Cambio estado de corfimacion de la cuenta y eliminacion de token
+            usuarioConfirmar.confirmado = true;
+            usuarioConfirmar.token = "";
+            await usuarioConfirmar.save();
+            res.json({ msg: "Usuario Confirmado Correctamente" });
+        } else {
+            const error = new Error("Token no valido");
+            return res.status(403).json({ msg: error.message })
+        }
     } catch {
         console.log(error);
     }
 };
 
+// recuperacion de contraseña
 const olvidePassword = async (req, res) => {
     const { email } = req.body
     const usuario = await Usuario.findOne({ email });
@@ -92,6 +95,7 @@ const olvidePassword = async (req, res) => {
     };
 
     try {
+        // creacion nuevo token de confirmacion
         usuario.token = generarId();
         await usuario.save();
 
@@ -108,8 +112,10 @@ const olvidePassword = async (req, res) => {
     };
 };
 
+// Confirmacion del token de recuperacion de contraseña
 const comprobarToken = async (req, res) => {
     const { token } = req.params;
+    // Verificacion del token en la base de datos
     const tokenValido = await Usuario.findOne({ token });
 
     if(tokenValido) {
@@ -120,6 +126,7 @@ const comprobarToken = async (req, res) => {
     };
 };
 
+// Actualizacion de nueva contraseña en la base de datos
 const nuevoPassword = async (req, res) => {
     const { token } = req.params;
     const { password } = req.body;
@@ -145,10 +152,11 @@ const nuevoPassword = async (req, res) => {
 const perfil = async (req, res) => {
     const { usuario } = req;
 // configurar el tipo usuario
+    console.log(usuario)
     res.json(usuario);
 }
 
-export { 
+export {
     registrar,
     autenticar,
     confirmar,
@@ -156,4 +164,4 @@ export {
     comprobarToken,
     nuevoPassword,
     perfil,
-}
+};

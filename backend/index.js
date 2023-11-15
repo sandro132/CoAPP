@@ -7,8 +7,10 @@ import router from "./routes/usuarioRoutes.js";
 const app = express();
 app.use(express.json()) //Permite procesar la informacion tipo json
 
+// Habilitando variables de entorno
 dotenv.config()
 
+// COnexion a la base de datos
 conectarDB();
 
 // configurar cors
@@ -32,6 +34,7 @@ app.use(cors(corsOptions));
 app.use('/api/usuarios', router)
 //TODO;
 
+// Puerto de conexion
 const PORT = process.env.PORT || 4000
 
 app.listen(PORT, () =>{

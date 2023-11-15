@@ -12,5 +12,7 @@ router.get("/confirmar/:token", confirmar);
 router.post("/olvide-password", olvidePassword);
 router.route("/olvide-password/:token").get(comprobarToken).post(nuevoPassword);
 router.get("/pagina-principal", checkAuth, perfil); //TODO: post sample complete query
+
 //searchJobs
+
 export default router;
