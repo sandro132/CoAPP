@@ -1,12 +1,12 @@
 import { ColumnP } from "./ColumnP";
 import { ColumnLen } from "./ColumnLen";
 
-const DashProfesional = () => {
+const DashEmpresa = () => {
   return (
     <main className=" shadow-lg p-5 bg-white my-2 mx-3 rounded-3xl">
       <div className="flex items-center justify-between">
         <h1 className="text-color:#393939  font-black text-2xl flex p-4 ">
-          Profesional Holberton - Coally
+          Empresa Holberton - Coally
         </h1>
       </div>
 
@@ -24,4 +24,4 @@ const DashProfesional = () => {
   );
 };
 
-export default DashProfesional;
+export default DashEmpresa;
