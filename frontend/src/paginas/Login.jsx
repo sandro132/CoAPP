@@ -49,11 +49,11 @@ const Login = () => {
         navigate("/pagina-principal")
       } else if(data.typeUser === "Profesional"){
         navigate("/pag-profesional")
-      } else if(data.typeUser === "Profesional"){
+      } else if(data.typeUser === "Empresa"){
         navigate("/empresa")
       } else {
         navigate('/login')
-      };
+      }
     
     } catch (error) {
       // If there's an error, set the alert state with an error message.
