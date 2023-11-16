@@ -9,7 +9,7 @@ const Empresa = () => {
         {/* Render the Navigation component for navigation elements */}
         <Navigation />
 
-        {/* Render the DashProfesional component for the main content of the professional page */}
+        {/* Render the DashProEmpresa component for the main content of the Empresa page */}
         <DashEmpresa />
       </div>
     </div>
