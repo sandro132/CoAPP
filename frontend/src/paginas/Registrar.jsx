@@ -5,78 +5,84 @@ import Drop from '../components/Drop';
 import clienteAxios from '../config/clienteAxios';
 import Union from '../components/Union';
 
-
+// Definition of the functional component Registrar
 const Registrar = () => {
+  // Definition of initial states using the useState hook
+  const [typeUser, setTypeUser] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [repetirpassword, setRepetirPassword] = useState("");
+  const [alerta, setAlerta] = useState({});
 
-  const [typeUser, setTypeUser] = useState("")
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [repetirpassword, setRepetirPassword] = useState('')
-  const [alerta, setAlerta] = useState({})
-  
-  const handleSubmit = async e => {
+  // Function that handles the form submission
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(typeUser)
-    console.log(repetirpassword)
+    console.log(typeUser);
+    console.log(repetirpassword);
 
-    if([name, email, password, repetirpassword].includes('')) {
+    // Form validations
+    if ([name, email, password, repetirpassword].includes("")) {
       setAlerta({
-        msg: 'Todos los campos son obligatorios',
-        error: true
-      })
+        msg: "Todos los campos son obligatorios",
+        error: true,
+      });
 
-      return
+      return;
     }
 
-    if(password != repetirpassword ) {
+    if (password != repetirpassword) {
       setAlerta({
-        msg: 'Las contraseñas no son iguales',
-        error: true
-      })
-      return
+        msg: "Las contraseñas no son iguales",
+        error: true,
+      });
+      return;
     }
 
-    if(password.length < 6 ) {
+    if (password.length < 6) {
       setAlerta({
-        msg: 'La contraseña es muy corta, minimo 6 carateres',
-        error: true
-      })
-      return
+        msg: "La contraseña es muy corta, minimo 6 carateres",
+        error: true,
+      });
+      return;
     }
 
-    setAlerta({})
+    setAlerta({});
 
-    //crear el usuario en la API
-    try { 
-      const { data } = await clienteAxios.post(
-        `/usuarios`,
-        { name, email, password, typeUser }
-      );
-      
+    // Create the user in the API
+    try {
+      const { data } = await clienteAxios.post(`/usuarios`, {
+        name,
+        email,
+        password,
+        typeUser,
+      });
+
       setAlerta({
         msg: data.msg,
-        error: false
-      })
+        error: false,
+      });
 
-      setName('')
-      setEmail('')
-      setPassword('')
-      setRepetirPassword('')
-      setTypeUser('')
-
+      // Clear form fields after successful registration
+      setName("");
+      setEmail("");
+      setPassword("");
+      setRepetirPassword("");
+      setTypeUser("");
     } catch (error) {
       setAlerta({
+        // Handle API errors and display alert messages
         msg: error.response.data.msg,
-        error: true
+        error: true,
       });
     }
+  };
+  // Additional state to handle password visibility
+  const [showPwd, setShowPwd] = useState(false);
+  const { msg } = alerta;
 
-}
-  const [showPwd, setShowPwd] = useState(false)
-  const { msg } = alerta
-
+  // JSX structure of the component
   return (
     <>
       <div className="loginBox">
@@ -97,14 +103,22 @@ const Registrar = () => {
             ¡Registrate aquí!
           </h1>
 
+          {/* Display alert message if it exists */}
           {msg && <Alerta alerta={alerta} />}
 
+          {/* Registration form */}
           <form
             className="my-10 bg-white shadow rounder-lg p-10"
             onSubmit={handleSubmit}
           >
-            <Drop onTipoUsuarioSeleccionado={(tipoUsuario) => setTypeUser(tipoUsuario)} />
+            {/* Drop component to select user type */}
+            <Drop
+              onTipoUsuarioSeleccionado={(tipoUsuario) =>
+                setTypeUser(tipoUsuario)
+              }
+            />
 
+            {/* Input fields for name, email, password, and repeat password */}
             <div className="my-5">
               <label
                 className="uppercase text-gray-600 block text-xl font-bold"
@@ -121,6 +135,10 @@ const Registrar = () => {
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
+
+            {/* ... (similar fields for email, password, and repeat password) */}
+
+            {/* Submit form button */}
 
             <div className="my-5">
               <label
@@ -154,7 +172,6 @@ const Registrar = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-
             </div>
 
             <div className="my-5">
@@ -162,7 +179,6 @@ const Registrar = () => {
                 className="uppercase text-gray-600 block text-xl font-bold"
                 htmlFor="contraseña2"
               >
-
                 Repetir Contraseña
               </label>
               <input
@@ -173,7 +189,11 @@ const Registrar = () => {
                 value={repetirpassword}
                 onChange={(e) => setRepetirPassword(e.target.value)}
               />
-              </div>
+            </div>
+
+            {/* ... (similar fields for email, password, and repeat password) */}
+
+            {/* Submit form button */}
 
             <input
               type="submit"
@@ -182,6 +202,7 @@ const Registrar = () => {
             />
           </form>
 
+          {/* Link to redirect to the login page */}
           <nav className="lg:flex lg:justify-between center">
             <Link
               className="block text-center my-1 text-slate-500 uppercase text-sm"
@@ -196,5 +217,5 @@ const Registrar = () => {
     </>
   );
 };
-
+// Export the component for use in other files
 export default Registrar;
